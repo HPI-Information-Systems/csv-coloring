@@ -6,6 +6,7 @@ import colour
 import app 
 import csv
 
+#trollollooo
 fileObject = csv.reader('C:\\Users\\Ella\\Ella-Kopie\\Studium\\Semester9\\Job\\debug.tar\\csv\\SouthTrent_reduced_TravelTimes.csv')
 row_count = sum(1 for row in fileObject)
 special_characters = ['!', '"', '$', '#', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~']
