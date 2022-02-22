@@ -31,60 +31,6 @@ from parsing import parse_cell
 from partition import find_external_lines, partition_contour, find_virtual_lines
 import clevercsv
 
-
-#I have changed the default value of color to True as I barely needed the False option until now
-# def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False, string_color=colour.Color("lightgreen").rgb, int_color=colour.Color("lightpink").rgb,float_color=colour.Color("mediumvioletred").rgb,**formatparams):
-#     print("starting function")
-#     img = []
-#     last_nonempty = 0
-#     #print(color)
-#     with open(path, 'r', encoding="UTF-8", errors="ignore") as csvfile:
-#         print('start reading')
-#         tablereader = csv.reader(csvfile, dialect,**formatparams)
-#         max_size = 0
-#         for idx, line in enumerate(tablereader):
-#             if line != [''] * len(line):
-#                 last_nonempty = idx
-
-#             #print(line)
-#             result = [parse_cell(val=val, color=color, string_color=string_color,int_color=int_color, float_color=float_color) for val in line]
-#             if cell_length:
-#                 result = [r for idx, r in enumerate(result) for _ in range(len(line[idx]))]
-
-#             if len(result) > max_size:
-#                 max_size = len(result)
-
-#             img.append(result)
-
-#     img = img[:last_nonempty + 1][:]
-
-#     #print(max_size)
-#     #print(img)
-
-#     new_img = []
-#     #TODO: Apply multiplication with 255 to files with uneve length as well
-
-#     #basically, i want to mark the parts with a rim that have lesser length than others by adding white
-#     # space in the parts that are left overcompared to other lines  
-
-#     for idx, line in enumerate(img):
-#         #line += [[255, 255, 255]] * (max_size - len(line))
-#         new_line=[]
-#         for val in line:
-#             print(val)
-#             val = (255* val[0], 255* val[1], 255* val[2])
-#             new_line.append(val)
-#             #print(val)
-#         line=new_line
-#         line += [[255, 255, 255]] * (max_size - len(line))
-#         new_img.append(line)
-
-#     img= new_img
-
-#     return img
-    
-#     #moved this part to its own file for more control over image properties lik size
-
 def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False, **formatparams):
     #print("starting function")
     img = []
@@ -107,10 +53,14 @@ def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False,
                 csv.field_size_limit(maxInt)
                 break
             except OverflowError:
+                st.write(**formatparams)
                 #TODO: Find out if we are only using this one in case includes taht you have to input a certain number of files at the start of an OverflowError
-                print("OverflowError")
+                st.write("OverflowError")
+                st.write(maxInt)
                 maxInt = int(maxInt/10)
-                for idx, line in enumerate(tablereader):
+                
+            
+            for idx, line in enumerate(tablereader):
                     if line != [''] * len(line):
                         last_nonempty = idx
 
@@ -302,123 +252,6 @@ def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False,
     
     #moved this part to its own file for more control over image properties lik size
 
-
-# def table_as_image_clevercsv(path, dialect= 'excel', color=False, cell_length=False, **formatparams):
-#     img = []
-#     last_nonempty = 0
-#     #print(color)
-#     with open(path, 'r', encoding="UTF-8", errors="ignore") as csvfile:
-#         tablereader = csv.reader(csvfile, dialect,**formatparams)
-#         max_size = 0
-#         for idx, line in enumerate(tablereader):
-#             if line != [''] * len(line):
-#                 last_nonempty = idx
-
-#             #print(line)
-#             result = [parse_cell(val, color) for val in line]
-#             if cell_length:
-#                 result = [r for idx, r in enumerate(result) for _ in range(len(line[idx]))]
-
-#             if len(result) > max_size:
-#                 max_size = len(result)
-
-#             img.append(result)
-
-#     img = img[:last_nonempty + 1][:]
-
-#     #print(max_size)
-#     #print(img)
-
-#     new_img = []
-#     #TODO: Apply multiplication with 255 to files with uneve length as well
-
-#     #basically, i want to mark the parts with a rim that have lesser length than others by adding white
-#     # space in the parts that are left overcompared to other lines  
-
-#     for idx, line in enumerate(img):
-#         #line += [[255, 255, 255]] * (max_size - len(line))
-#         new_line=[]
-#         for val in line:
-#             print(val)
-#             val = (255* val[0], 255* val[1], 255* val[2])
-#             new_line.append(val)
-
-#         line=new_line
-#         line += [[255, 255, 255]] * (max_size - len(line))
-#         new_img.append(line)
-
-#     img= new_img
-
-#     print(img)
-#     #print(img.type())
-#     #img = np.asarray(img, dtype="uint8")
-#     img = np.array(img, dtype=np.int8)    
-#     #print("array: ")
-#     #print(img)
-#     img_file = Image.fromarray(img, 'RGB')
-#     #img_file = img_file.resize(tuple(np.array(im.size) * 200), resample=PIL.Image.NEAREST)
-#     #print('image: ')
-#     #print(img_file)
-#     return img_file
-    
-#     #moved this part to its own file for more control over image properties lik size
-
-# def table_as_image(path, delimiter =",", color=False, cell_length=False, **formatparams):
-#     img = []
-#     last_nonempty = 0
-#     #print(color)
-#     with open(path, 'r', encoding="UTF-8", errors="ignore") as csvfile:
-#         tablereader = csv.reader(csvfile, **formatparams)
-#         max_size = 0
-#         for idx, line in enumerate(tablereader):
-#             if line != [''] * len(line):
-#                 last_nonempty = idx
-
-#             #print(line)
-#             result = [parse_cell(val, color) for val in line]
-#             if cell_length:
-#                 result = [r for idx, r in enumerate(result) for _ in range(len(line[idx]))]
-
-#             if len(result) > max_size:
-#                 max_size = len(result)
-
-#             img.append(result)
-
-#     img = img[:last_nonempty + 1][:]
-
-#     #print(max_size)
-#     #print(img)
-
-#     new_img = []
-#     #TODO: Apply multiplication with 255 to files with uneve length as well
-
-#     #basically, i want to mark the parts with a rim that have lesser length than others by adding white
-#     # space in the parts that are left overcompared to other lines  
-
-#     for idx, line in enumerate(img):
-#         #line += [[255, 255, 255]] * (max_size - len(line))
-#         new_line=[]
-#         for val in line:
-#             val = (255* val[0], 255* val[1], 255* val[2])
-#             new_line.append(val)
-#             #print(val)
-#         line=new_line
-#         line += [[255, 255, 255]] * (max_size - len(line))
-#         new_img.append(line)
-
-#     img= new_img
-
-#     #print(img)
-#     #print(img.type())
-#     img = np.asarray(img,dtype= np.int8)
-#     #img = np.asarray(img,dtype= "uint8")
-#     #print("array: ")
-#     #print(img)
-#     img_file = Image.fromarray(img, 'RGB')
-#     #img_file = img_file.resize(tuple(np.array(im.size) * 200), resample=PIL.Image.NEAREST)
-#     #print('image: ')
-#     #print(img_file)
-#     return img_file
     
 #moved this part to its own file for more control over image properties lik size
     

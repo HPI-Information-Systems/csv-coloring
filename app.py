@@ -13,11 +13,9 @@ import easygui
 import csv
 from PIL import ImageColor
 import colour
-from mondrian.CellType import CellType
 
 #TODO: Überlege dir, ob du die Farben intern im Hex-oder im RGB-Format speichern möchtest
 
-#special_characters = ['!', '"', '$', '#', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~']
 #i have added the empty string  at the start
 special_characters = ['!', '"', '$', '#', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~','','\\r\\n']
 
@@ -87,131 +85,6 @@ def go_over_characters(file_path, height, width, character_choices, image_same):
                 num=num+1
                 #st.write(num)
 
-
-def go_over_characters_deprecated(file_path, separator, quotechar, escapechar,height, width):
-    cols = st.columns(3)
-    num =0
-    st.write('starting going over chars')
-    if separator.find('None') != -1:
-        st.write('Chose separator')
-        for i in range(0, len(special_characters)):                     # create image grid
-            if quotechar.find('None') != -1:
-                for j in range(0, len(special_characters)):                     # create image grid
-                    if escapechar.find('None') != -1:
-                        for g in range(0, len(special_characters)):                     # create image grid                                
-                            if num % 3 == 0:
-                                if special_characters[g] == '#':
-                                    #cols[0].subheader("#ㅤ")
-                                    cols[0].subheader("#")
-                                else:
-                                    cols[0].subheader(f'{special_characters[g]}')
-                                    cols[0].image(manipulate_created_image(table_as_image_better(file_path, delimiter=f'{special_characters[i]}', quotechar=f'{special_characters[j]}', escapechar=f'{special_characters[g]}'),height, width))
-                            elif num % 3 == 1:
-                                cols[1].subheader(f'{special_characters[g]}')
-                                cols[1].image(manipulate_created_image(table_as_image_better(file_path,delimiter=f'{special_characters[i]}', quotechar=f'{special_characters[j]}', escapechar=f'{special_characters[g]}'), height,width))
-                            elif num % 3 == 2:
-                                cols[2].subheader(f'{special_characters[g]}')
-                                cols[2].image(manipulate_created_image(table_as_image_better(file_path, delimiter=f'{special_characters[i]}', quotechar=f'{special_characters[j]}', escapechar=f'{special_characters[g]}',), height, width))
-                            num=num+1
-                    else:
-                        if num % 3 == 0:
-                            if special_characters[j] == '#':
-                                #cols[0].subheader("#ㅤ")
-                                cols[0].subheader("#")
-                            else:
-                                cols[0].subheader(f'{special_characters[j]}')
-                                cols[0].image(manipulate_created_image(table_as_image_better(file_path, delimiter=f'{special_characters[i]}', quotechar=f'{special_characters[j]}', escapechar=escapecharr),height, width))
-                        elif num % 3 == 1:
-                            cols[1].subheader(f'{special_characters[j]}')
-                            cols[1].image(manipulate_created_image(table_as_image_better(file_path,delimiter=f'{special_characters[i]}', quotechar=f'{special_characters[j]}', escapechar=escapechar),height,width))
-                        elif num % 3 == 2:
-                            cols[2].subheader(f'{special_characters[j]}')
-                            cols[2].image(manipulate_created_image(table_as_image_better(file_path,delimiter=f'{special_characters[i]}', quotechar=f'{special_characters[j]}', escapechar=escapechar), height, width))
-                        num=num+1
-                            
-            else:      
-                if num % 3 == 0:
-                    if special_characters[i] == '#':
-                        #cols[0].subheader("#ㅤ")
-                        cols[0].subheader("#")
-                    else:
-                        cols[0].subheader(f'{special_characters[i]}')
-                        cols[0].image(manipulate_created_image(table_as_image_better(file_path, delimiter=f'{special_characters[i]}', quotechar=quotechar, escapechar=escapechar), height, width))
-                elif num % 3 == 1:
-                    cols[1].subheader(f'{special_characters[i]}')
-                    cols[1].image(manipulate_created_image(table_as_image_better(file_path, delimiter=f'{special_characters[i]}', quotechar=quotechar, escapechar=escapechar), height, width))
-                elif num % 3 == 2:
-                    cols[2].subheader(f'{special_characters[i]}')
-                    cols[2].image(manipulate_created_image(table_as_image_better(file_path,delimiter=f'{special_characters[i]}', quotechar=quotechar, escapechar=escapechar), height, width))
-                num=num+1
-
-    
-    elif quotechar.find('None') != -1:
-        st.write('chose quotechar')
-        for j in range(0, len(special_characters)):                     # create image grid
-            if escapechar.find('None') != -1:
-                for g in range(0, len(special_characters)):                     # create image grid                                
-                    if num % 3 == 0:
-                        if special_characters[g] == '#':
-                            #cols[0].subheader("#ㅤ")
-                            cols[0].subheader("#")
-                        else:
-                            cols[0].subheader(f'{special_characters[g]}')
-                            cols[0].image(manipulate_created_image(table_as_image_better(file_path, delimiter=separator, quotechar=f'{special_characters[j]}', escapechar=f'{special_characters[g]}'), height, width))
-                    elif num % 3 == 1:
-                        cols[1].subheader(f'{special_characters[g]}')
-                        cols[1].image(manipulate_created_image(table_as_image_better(file_path, delimiter=separator, quotechar=f'{special_characters[j]}', escapechar=f'{special_characters[g]}'), height, width))
-                    elif num % 3 == 2:
-                        cols[2].subheader(f'{special_characters[g]}')
-                        cols[2].image(manipulate_created_image(table_as_image_better(file_path, delimiter=separator, quotechar=f'{special_characters[j]}', escapechar=f'{special_characters[g]}'), height, width))
-                    num=num+1
-                    st.write(num)
-
-                else:
-                    if num % 3 == 0:
-                        if special_characters[j] == '#':
-                            #cols[0].subheader("#ㅤ")
-                            cols[0].subheader("#")
-                        else:
-                            cols[0].subheader(f'{special_characters[j]}')
-                            cols[0].image(manipulate_created_image(table_as_image_better(file_path, delimiter=separator, quotechar=f'{special_characters[j]}', escapechar=escapechar), height, width))
-                    elif num % 3 == 1:
-                        cols[1].subheader(f'{special_characters[j]}')
-                        cols[1].image(manipulate_created_image(table_as_image_better(file_path, delimiter=separator, quotechar=f'{special_characters[j]}', escapechar=escapechar), height, width))
-                    elif num % 3 == 2:
-                        cols[2].subheader(f'{special_characters[j]}')
-                        cols[2].image(manipulate_created_image(table_as_image_better(file_path, delimiter=separator, quotechar=f'{special_characters[j]}', escapechar=escapechar), height, width))
-                    num=num+1
-                    st.write(num)
-
-
-    
-    elif escapechar.find('None') != -1:
-        st.write('chose escapechar')
-        for g in range(0, len(special_characters)):                     # create image grid                                
-            if num % 3 == 0:
-                if special_characters[g] == '#':
-                    #cols[0].subheader("#ㅤ")
-                    cols[0].subheader("#")
-                else:
-                    cols[0].subheader(f'{special_characters[g]}')
-                    image_all_same_color, image = manipulate_created_image(table_as_image_better(file_path, delimiter=separator, quotechar=quotechar, escapechar=f'{special_characters[g]}'),height, width)
-                    if image_all_same_color:
-                        continue
-                    cols[0].image(image)
-            elif num % 3 == 1:
-                cols[1].subheader(f'{special_characters[g]}')
-                image_all_same_color, image = manipulate_created_image(table_as_image_better(file_path, delimiter=separator, quotechar=quotechar, escapechar=f'{special_characters[g]}'),height, width)
-                if image_all_same_color:
-                    continue
-                cols[1].image(image)            
-            elif num % 3 == 2:
-                cols[2].subheader(f'{special_characters[g]}')
-                image_all_same_color, image = manipulate_created_image(table_as_image_better(file_path, delimiter=separator, quotechar=quotechar, escapechar=f'{special_characters[g]}'),height, width)
-                if image_all_same_color:
-                    continue
-                cols[2].image(image)   
-
 def reset_columns_and_rows():
     with open("mondrian\\colors.json", "r") as jsonfile:
         data = json.load(jsonfile) # Reading the file
@@ -268,150 +141,64 @@ def append_existing_file(uploaded_sep_file, uploaded_file, sep):
     new_row.to_csv(f'{df}', mode='a', header=False,)
     return df
 
-def app():
-    # st.title('Simple Streamlit App')
-    # st.text('Type a number in the box below')
-    # n = st.number_input('Number', step=1)
-    # st.write(f'{n} + 1 = {n+1}')
-    # s = st.text_input('Type a name in the box below')
-    # st.write(f'Hello {s}')
-    st.sidebar.title('Select a tool')
-    page = st.sidebar.radio('', ('CSV Annotation check', 'CSV Dialect detection'))
-    st.title(page)
-    st.sidebar.markdown(f'# {page}')
-    file_path = st.sidebar.text_input('Enter the path to your CSV File')
-    st.sidebar.subheader('Your CSV file:')
-    if not file_path: #TODO: Check if String is file path
-        st.sidebar.markdown('No file uploaded/Invalid path')
-    elif not file_path.endswith('.csv'):
-        st.sidebar.markdown('This is not a CSV file')
-    else:
-        st.sidebar.markdown(os.path.basename(file_path))
-        if page == 'CSV Annotation check':
-            st.sidebar.subheader('CSV Settings')
-            rowsToShow = st.sidebar.number_input(                           #  set number of rows to show
-                'How many rows do you want to show?',             
-                min_value=1,                                                #  minimum value
-                value=20                                                    #  default value
-            ) 
-            selected_separator = st.sidebar.text_input(               #  set seperator
-                'Enter the seperator you want to test.', 
-                ','                                                         #  default seperator
-            )
-            selected_quoting_type = st.sidebar.text_input(               #  set seperator
-                'Enter the quote character you want to test.', 
-                '"'                                                         #  default seperator
-            )
-            selected_seperating_type = st.sidebar.text_input(               #  set seperator
-                'Enter the escape character you want to test.', 
-                '\n'                                                         #  default seperator
-            )
-            st.sidebar.subheader('Select the colors for the data types')
-            cols = st.sidebar.columns(3)                                            
-            string_color = cols[0].color_picker(                            #  set string color
-                'String color', 
-                value='#90ee90'
-            )     
-            int_color = cols[1].color_picker(                               #  set int color
-            'Integer color', 
-            value='#ffb6c1'
-            )           
-            float_color = cols[2].color_picker(                             #  set float color
-            'Float color', 
-            value='#add8e6'
-            )                       
-            data = load_data(file_path,sep=selected_separator, nrows=rowsToShow, quotechar=selected_quoting_type, escapechar= selected_seperating_type)
-            st.dataframe(data.style.applymap(lambda x:highlight_cell(x,int_color, float_color, string_color )))               #  display data in table with highlighted cells
-        elif page == 'CSV Dialect detection':
-            # st.sidebar.subheader('Remember the chosen seperator')
-            # already_seperator_file = st.sidebar.checkbox('I already have a file with seperators for files')
-            # st.write('<style>div.row-widget.stRadio>div{flex-direction:row;grid-column-gap:30px;}</style>', unsafe_allow_html=True) #Set alignment of radio buttons
-            # choose=st.radio("Select the right seperator",(special_characters))
-            # cols = st.columns(3)
-            # for i in range(0, len(special_characters)):                     # create image grid
-            #     if i % 3 == 0:
-            #         if special_characters[i] == '#':
-            #             #cols[0].subheader("#ㅤ")
-            #             cols[0].subheader("#")
-            #         else:
-            #             cols[0].subheader(f'{special_characters[i]}')
-            #         cols[0].image(table_as_image(file_path, f'{special_characters[i]}', color=True))
-            #     elif i % 3 == 1:
-            #         cols[1].subheader(f'{special_characters[i]}')
-            #         cols[1].image(table_as_image(file_path, f'{special_characters[i]}', color=True))
-            #     elif i % 3 == 2:
-            #         cols[2].subheader(f'{special_characters[i]}')
-            #         cols[2].image(table_as_image(file_path, f'{special_characters[i]}', color=True))
-            
-            st.sidebar.subheader('Remember the chosen delimiter')
-            already_seperator_file = st.sidebar.checkbox('I already have a file with delimiters for files')
-            st.write('<style>div.row-widget.stRadio>div{flex-direction:row;grid-column-gap:30px;}</style>', unsafe_allow_html=True) #Set alignment of radio buttons
-            #extraspecial_chars=set(special_characters)
-            #extraspecial_chars.add('None')
-            #extraspecial_chars = list(extraspecial_chars)
-            extraspecial_chars = list(special_characters)
-
+def set_characters():
             st.subheader('Select a delimiter (You must select at least one)')
             cols = st.columns(9)
 
+            extraspecial_chars = list(special_characters)
             choose_delimiter=[]
             delimiter_indices=[]
-            choose_all= st.checkbox('Choose all characters', key=4)
+            choose_all= st.checkbox('Choose all characters', key=7)
             # am excluding the characters that get rejected by the reader from what is shown,
             # may have to change code to accomodate them
             for i in range(0, len(extraspecial_chars)):
-                #choose_separators[i] = st.checkbox(extraspecial_chars[i])
                 if choose_all:
                     if extraspecial_chars[i]==',': 
-                        delimiter_choice=cols[i%9].checkbox(',',True, key=1)
+                        delimiter_choice=cols[i%9].checkbox(',',True, key=10)
                     elif extraspecial_chars[i]=='': 
-                        #delimiter_choice=cols[i%9].checkbox('',False, key=1)
                         delimiter_choice=False
                         pass
                     elif extraspecial_chars[i]=="\\r\\n":
-                        #delimiter_choice=cols[i%9].checkbox('\\r\\n',True, key=1)
                         delimiter_choice=False
                         pass
                     else:
-                        delimiter_choice=cols[i%9].checkbox(extraspecial_chars[i],True, key=1)
+                        delimiter_choice=cols[i%9].checkbox(extraspecial_chars[i],True, key=10)
                 elif extraspecial_chars[i]==',': 
-                    delimiter_choice=cols[i%9].checkbox(',',True, key=1)
+                    delimiter_choice=cols[i%9].checkbox(',',True, key=10)
                 elif extraspecial_chars[i]=="\\r\\n":
                     delimiter_choice=False
                     #pass
                 elif extraspecial_chars[i]=='':
-                    #delimiter_choice=cols[i%9].checkbox('',True, key=1)
                     delimiter_choice=False
                     pass
                 else: 
-                    delimiter_choice=cols[i%9].checkbox(extraspecial_chars[i], key=1)
+                    delimiter_choice=cols[i%9].checkbox(extraspecial_chars[i], key=10)
                 choose_delimiter.append(delimiter_choice)
                 if delimiter_choice:
                     delimiter_indices.append(i)
 
+            
             st.subheader('Select a quotechar (You must choose at least one)')
             cols = st.columns(9)
             choose_quotechars=[]
             quotechar_indices=[]
-            choose_all= st.checkbox('Choose all characters', key=5)
+            choose_all= st.checkbox('Choose all characters', key=8)
             for i in range(0, len(extraspecial_chars)):
                 if choose_all:
                     if extraspecial_chars[i]=='"': 
-                        quotechar_choice=cols[i%9].checkbox('"',True, key=2)
+                        quotechar_choice=cols[i%9].checkbox('"',True, key=11)
                     elif extraspecial_chars[i]=='': 
-                        #separator_choice=cols[i%9].checkbox('',True, key=2)
-                        quotechar_choice=cols[i%9].checkbox('"',True, key=2)
+                        quotechar_choice=cols[i%9].checkbox('"',True, key=11)
                     else:
-                        separator_choice=cols[i%9].checkbox(extraspecial_chars[i],True, key=2)
+                        quotechar_choice=cols[i%9].checkbox(extraspecial_chars[i],True, key=11)
                 elif extraspecial_chars[i]=='': 
-                    #separator_choice=cols[i%9].checkbox('',True, key=2)
                     pass
                 elif extraspecial_chars[i]=='"': 
-                    quotechar_choice=cols[i%9].checkbox('"',True, key=2)
+                    quotechar_choice=cols[i%9].checkbox('"',True, key=11)
                 elif extraspecial_chars[i]=='':
-                    quotechar_choice=cols[i%9].checkbox('',True, key=2)
+                    quotechar_choice=cols[i%9].checkbox('',True, key=11)
                 else: 
-                    quotechar_choice=cols[i%9].checkbox(extraspecial_chars[i], key=2)     
+                    quotechar_choice=cols[i%9].checkbox(extraspecial_chars[i], key=11)     
                 choose_quotechars.append(quotechar_choice)
                 if quotechar_choice:
                     quotechar_indices.append(i)
@@ -420,17 +207,17 @@ def app():
             cols = st.columns(9)
             choose_escapechars=[]
             escapechar_indices=[]
-            choose_all= st.checkbox('Choose all characters', key=6)
+            choose_all= st.checkbox('Choose all characters', key=9)
             for i in range(0, len(extraspecial_chars)):
                 if choose_all:
                     if extraspecial_chars[i]=='\\r\\n':
-                        escapechar_choice=cols[i%9].checkbox('\\r\\n',True, key=3)
+                        escapechar_choice=cols[i%9].checkbox('\\r\\n',True, key=12)
                     else:    
-                        escapechar_choice=cols[i%9].checkbox(extraspecial_chars[i],True, key=3)
+                        escapechar_choice=cols[i%9].checkbox(extraspecial_chars[i],True, key=12)
                 elif extraspecial_chars[i]=='\\r\\n':
-                    escapechar_choice=cols[i%9].checkbox('\\r\\n',True, key=3)
+                    escapechar_choice=cols[i%9].checkbox('\\r\\n',True, key=12)
                 else: 
-                    escapechar_choice=cols[i%9].checkbox(extraspecial_chars[i], key=3)                
+                    escapechar_choice=cols[i%9].checkbox(extraspecial_chars[i], key=12)                
                 choose_escapechars.append(escapechar_choice)
                 if escapechar_choice:
                     escapechar_indices.append(i)
@@ -439,107 +226,14 @@ def app():
             character_choices.append(delimiter_indices)
             character_choices.append(quotechar_indices)
             character_choices.append(escapechar_indices)
-            #st.write(character_choices)
 
+            return character_choices
+
+def set_colors():
             with open("mondrian\\colors.json", "r") as jsonfile:
                 data = json.load(jsonfile) # Reading the file
                 print("Read successful")
                 jsonfile.close()
-            # choose_sep=st.radio("Select the right seperator",(extraspecial_chars),key ='separator')
-            # choose_quote=st.radio("Select the right quotechar",(extraspecial_chars),key='quotechar')
-            # choose_esc=st.radio("Select the right escapechar",(extraspecial_chars), key='escapechar')
-            height = st.number_input('Height of generated picture',200)
-            data['height']= height
-            width = st.number_input('Width of generated picture', 200)
-            data['width'] = width
-            #display_all_lines_in_file= st.checkbox("Display the color for alle lines in the csv file")
-            #line_output_at_start = st.number_input('Display first ... lines')
-            #line_output_at_stop = st.number_input('Display last ... lines')
-            #line_output_start = st.number_input('Display image from line ... in csv file')
-            #line_output_end = st.number_input('Display image until line ... in csv file')
-            display_all_rows_in_file = "Display the color for alle lines in the csv file"
-            row_output_start = 'Display first ... lines'
-            row_output_end = 'Display last ... lines'
-            start_to_stop_rows = 'Display image from line ... to line ...'
-
-            row_settings = [row_output_start, row_output_end, start_to_stop_rows, display_all_rows_in_file]
-            row_settings_radio = st.radio('Change the way the rows of the csv file are displayed',row_settings)
-            #you somehow need to make it so that the first 2 options do not exclude each other
-            #idea: trigger condition even if only  one of them is picked - but you schould be able to pick 
-            #two at the sametime!?
-            if row_settings_radio == start_to_stop_rows:
-                #TODO: make it so that both picking or not picking the other value produces a result
-                # where both values get a value
-                start_row = st.number_input('Display from the ...th row on', 0)
-            #if line_settings_radio== line_output_at_stop:
-                stop_row = st.number_input('Display up unto ...th row',0)
-                if start_row> stop_row:
-                    st.write('The row where the output starts comes later than the one where the output stops. In this case the program will ouput the'
-                    +'the image with all row. Please change the values accordingly if you do not want that.')
-                elif start_row == stop_row:
-                    st.write('The row where the output starts must not be equal to the one where the output stops. In this case the program will ouput the'
-                    +'the image with all rows. Please change the values accordingly if you do not want that.')
-                else:
-                    data['row_output_from']=start_row
-                    data['row_output_until']=stop_row
-            #just making this dependent on first if is not good -> TODO: fix this!
-            elif  row_settings_radio ==row_output_start:
-                number_start_rows = st.number_input('Display first  ... rows',0)
-                data['row_output_start']=number_start_rows
-            elif  row_settings_radio ==row_output_end:
-                number_end_rows = st.number_input('Display last ... rows',0)
-                data['row_output_end']=number_end_rows
-            st.write("If any other options than 'display all lines in file' is chosen but all input numbers "+
-            "are 0, then the execution will be as if 'display all lines in file' had been chosen")
-            #do you need to do anything in the else case - > no, because then everything else is 
-            #displayed anyway
-
-            display_all_columns_in_file = "Display the color for all columns in the csv file"
-            column_output_start = 'Display first ... columns'
-            column_output_end = 'Display last ... column'
-            start_to_stop_columns = 'Display image from column ... to column ...'
-
-            column_settings = [column_output_start, column_output_end, start_to_stop_columns, display_all_columns_in_file]
-            column_settings_radio = st.radio('Change the way the columns of the csv file are displayed', column_settings)
-            #you somehow need to make it so that the first 2 options do not exclude each other
-            #idea: trigger condition even if only  one of them is picked - but you schould be able to pick 
-            #two at the sametime!?
-            if column_settings_radio == start_to_stop_columns:
-                reset_columns_and_rows()
-                #TODO: make it so that both picking or not picking the other value produces a result
-                # where both values get a value
-                start_column = st.number_input('Display from the ...th column on', 0)
-            #if line_settings_radio== line_output_at_stop:
-                stop_column = st.number_input('Display up unto ... lines',0)
-                if start_column> stop_column:
-                    st.write('The column where the output starts comes later than the one where the output stops. In this case the program will ouput the'
-                    +'the image with all columns. Please change the values accordingly if you do not want that.')
-                elif start_column == stop_column:
-                    st.write('The column where the output starts must not be equal to the one where the output stops. In this case the program will ouput the'
-                    +'the image with all columns. Please change the values accordingly if you do not want that.')
-                else:
-                    data['column_output_from']=start_column
-                    data['column_output_until']=stop_column
-            #just making this dependent on first if is not good -> TODO: fix this!
-            elif  column_settings_radio ==column_output_start:
-                reset_columns_and_rows()
-                number_start_columns = st.number_input('Display first  ... columns',0)
-                data['column_output_start']=number_start_columns
-            elif  column_settings_radio ==column_output_end:
-                reset_columns_and_rows()
-                number_end_columns = st.number_input('Display last ... columns',0)
-                data['column_output_end']=number_end_columns
-            st.write("If any other options than 'display all column in file' is chosen but all input numbers "+
-            "are 0, then the execution will be as if 'display all columns in file' had been chosen")
-
-            
-            #right now pretty much all preset values are 0 -> these values mean that nothing needs to be
-            #changed because once you activated the visualization we  are certain you want to see an image            #idea: once something has been chosen, automatically write it into the config file
-            #this also means that you need default settings for them 
-            #why do you add different data blocks to json files, bc right now my file has everything
-            #in the same data
-            st.write("Please note that depending on the used dialect, there may not be as many lines in the file as are given above so we will choose an approximate amount of the total lines")
-            #dialect = "dialect_"+  file_path.rsplit('\\')[len(file_path.rsplit('\\'))-1]
             st.sidebar.subheader('Select the colors for the data types')
             cols = st.sidebar.columns(3)      
             string_color = cols[0].color_picker(                            #  set string color
@@ -593,16 +287,283 @@ def app():
                 #print("Write successful")
                 jsonfile.close()
 
+def set_row_settings():
+
+            with open("mondrian\\colors.json", "r") as jsonfile:
+                data = json.load(jsonfile) # Reading the file
+                print("Read successful")
+                jsonfile.close()
+            display_all_rows_in_file = "Display the color for alle lines in the csv file"
+            row_output_start = 'Display first ... lines'
+            row_output_end = 'Display last ... lines'
+            start_to_stop_rows = 'Display image from line ... to line ...'
+
+            row_settings = [row_output_start, row_output_end, start_to_stop_rows, display_all_rows_in_file]
+            row_settings_radio = st.radio('Change the way the rows of the csv file are displayed',row_settings)
+            #you somehow need to make it so that the first 2 options do not exclude each other
+            #idea: trigger condition even if only  one of them is picked - but you schould be able to pick 
+            #two at the sametime!?
+            if row_settings_radio == start_to_stop_rows:
+                #TODO: make it so that both picking or not picking the other value produces a result
+                # where both values get a value
+                start_row = st.number_input('Display from the ...th row on', 0)
+            #if line_settings_radio== line_output_at_stop:
+                stop_row = st.number_input('Display up unto ...th row',0)
+                if start_row> stop_row:
+                    st.write('The row where the output starts comes later than the one where the output stops. In this case the program will ouput the'
+                    +'the image with all row. Please change the values accordingly if you do not want that.')
+                elif start_row == stop_row:
+                    st.write('The row where the output starts must not be equal to the one where the output stops. In this case the program will ouput the'
+                    +'the image with all rows. Please change the values accordingly if you do not want that.')
+                else:
+                    data['row_output_from']=start_row
+                    data['row_output_until']=stop_row
+            #just making this dependent on first if is not good -> TODO: fix this!
+            elif  row_settings_radio ==row_output_start:
+                number_start_rows = st.number_input('Display first  ... rows',0)
+                data['row_output_start']=number_start_rows
+            elif  row_settings_radio ==row_output_end:
+                number_end_rows = st.number_input('Display last ... rows',0)
+                data['row_output_end']=number_end_rows
+            st.write("If any other options than 'display all lines in file' is chosen but all input numbers "
+            +"are 0, then the execution will be as if 'display all lines in file' had been chosen")
+            with open("mondrian\\colors.json", "w") as jsonfile:
+                myJSON = json.dump(data, jsonfile) # Writing to the file
+                #print("Write successful")
+                jsonfile.close()
+
+def set_column_settings():
+
+            with open("mondrian\\colors.json", "r") as jsonfile:
+                data = json.load(jsonfile) # Reading the file
+                print("Read successful")
+                jsonfile.close()
+            display_all_columns_in_file = "Display the color for all columns in the csv file"
+            column_output_start = 'Display first ... columns'
+            column_output_end = 'Display last ... column'
+            start_to_stop_columns = 'Display image from column ... to column ...'
+            
+
+            column_settings = [column_output_start, column_output_end, start_to_stop_columns, display_all_columns_in_file]
+            column_settings_radio = st.radio('Change the way the columns of the csv file are displayed', column_settings)
+            #you somehow need to make it so that the first 2 options do not exclude each other
+            #idea: trigger condition even if only  one of them is picked - but you schould be able to pick 
+            #two at the sametime!?
+            if column_settings_radio == start_to_stop_columns:
+                reset_columns_and_rows()
+                #TODO: make it so that both picking or not picking the other value produces a result
+                # where both values get a value
+                start_column = st.number_input('Display from the ...th column on', 0)
+            #if line_settings_radio== line_output_at_stop:
+                stop_column = st.number_input('Display up unto ... lines',0)
+                if start_column> stop_column:
+                    st.write('The column where the output starts comes later than the one where the output stops. In this case the program will ouput the'
+                    +'the image with all columns. Please change the values accordingly if you do not want that.')
+                elif start_column == stop_column:
+                    st.write('The column where the output starts must not be equal to the one where the output stops. In this case the program will ouput the'
+                    +'the image with all columns. Please change the values accordingly if you do not want that.')
+                else:
+                    data['column_output_from']=start_column
+                    data['column_output_until']=stop_column
+            #just making this dependent on first if is not good -> TODO: fix this!
+            elif  column_settings_radio ==column_output_start:
+                reset_columns_and_rows()
+                number_start_columns = st.number_input('Display first  ... columns',0)
+                data['column_output_start']=number_start_columns
+            elif  column_settings_radio ==column_output_end:
+                reset_columns_and_rows()
+                number_end_columns = st.number_input('Display last ... columns',0)
+                data['column_output_end']=number_end_columns
+            st.write("If any other options than 'display all column in file' is chosen but all input numbers "+
+            "are 0, then the execution will be as if 'display all columns in file' had been chosen")
+            with open("mondrian\\colors.json", "w") as jsonfile:
+                myJSON = json.dump(data, jsonfile) # Writing to the file
+                #print("Write successful")
+                jsonfile.close()
+
+def set_height_and_width():
+            with open("mondrian\\colors.json", "r") as jsonfile:
+                data = json.load(jsonfile) # Reading the file
+                print("Read successful")
+                jsonfile.close()
+            height = st.number_input('Height of generated picture',200)
+            data['height']= height
+            width = st.number_input('Width of generated picture', 200)
+            data['width'] = width
+            with open("mondrian\\colors.json", "w") as jsonfile:
+                myJSON = json.dump(data, jsonfile) # Writing to the file
+                #print("Write successful")
+                jsonfile.close()
+
+def app():
+    st.sidebar.title('Select a tool')
+    page = st.sidebar.radio('', ('CSV Annotation check', 'CSV Dialect detection'))
+    st.title(page)
+    st.sidebar.markdown(f'# {page}')
+    file_path = st.sidebar.text_input('Enter the path to your CSV File')
+    st.sidebar.subheader('Your CSV file:')
+    if not file_path: #TODO: Check if String is file path
+        st.sidebar.markdown('No file uploaded/Invalid path')
+    elif not file_path.endswith('.csv'):
+        st.sidebar.markdown('This is not a CSV file')
+    else:
+        st.sidebar.markdown(os.path.basename(file_path))
+        if page == 'CSV Annotation check':
+            st.sidebar.subheader('CSV Settings')
+            rowsToShow = st.sidebar.number_input(                           #  set number of rows to show
+                'How many rows do you want to show?',             
+                min_value=1,                                                #  minimum value
+                value=20                                                    #  default value
+            ) 
+            selected_separator = st.sidebar.text_input(               #  set seperator
+                'Enter the seperator you want to test.', 
+                ','                                                         #  default seperator
+            )
+            selected_quoting_type = st.sidebar.text_input(               #  set seperator
+                'Enter the quote character you want to test.', 
+                '"'                                                         #  default seperator
+            )
+            selected_seperating_type = st.sidebar.text_input(               #  set seperator
+                'Enter the escape character you want to test.', 
+                '\n'                                                         #  default seperator
+            )
+            st.sidebar.subheader('Select the colors for the data types')
+            cols = st.sidebar.columns(3)                                            
+            string_color = cols[0].color_picker(                            #  set string color
+                'String color', 
+                value='#90ee90'
+            )     
+            int_color = cols[1].color_picker(                               #  set int color
+            'Integer color', 
+            value='#ffb6c1'
+            )           
+            float_color = cols[2].color_picker(                             #  set float color
+            'Float color', 
+            value='#add8e6'
+            )                       
+            data = load_data(file_path,sep=selected_separator, nrows=rowsToShow, quotechar=selected_quoting_type, escapechar= selected_seperating_type)
+            st.dataframe(data.style.applymap(lambda x:highlight_cell(x,int_color, float_color, string_color )))               #  display data in table with highlighted cells
+        elif page == 'CSV Dialect detection':
+            # st.sidebar.subheader('Remember the chosen seperator')
+            # already_seperator_file = st.sidebar.checkbox('I already have a file with seperators for files')
+            # st.write('<style>div.row-widget.stRadio>div{flex-direction:row;grid-column-gap:30px;}</style>', unsafe_allow_html=True) #Set alignment of radio buttons
+            # choose=st.radio("Select the right seperator",(special_characters))
+            
+            st.sidebar.subheader('Remember the chosen delimiter')
+            already_seperator_file = st.sidebar.checkbox('I already have a file with delimiters for files')
+            st.write('<style>div.row-widget.stRadio>div{flex-direction:row;grid-column-gap:30px;}</style>', unsafe_allow_html=True) #Set alignment of radio buttons
+            extraspecial_chars = list(special_characters)
+
+            st.subheader('Select a delimiter (You must select at least one)')
+            cols = st.columns(9)
+
+            character_choices = set_characters()
+            #st.write(character_choices)
+
+            # with open("mondrian\\colors.json", "r") as jsonfile:
+            #     data = json.load(jsonfile) # Reading the file
+            #     print("Read successful")
+            #     jsonfile.close()
+            # height = st.number_input('Height of generated picture',200)
+            # data['height']= height
+            # width = st.number_input('Width of generated picture', 200)
+            # data['width'] = width
+
+            # display_all_rows_in_file = "Display the color for alle lines in the csv file"
+            # row_output_start = 'Display first ... lines'
+            # row_output_end = 'Display last ... lines'
+            # start_to_stop_rows = 'Display image from line ... to line ...'
+
+            # row_settings = [row_output_start, row_output_end, start_to_stop_rows, display_all_rows_in_file]
+            # row_settings_radio = st.radio('Change the way the rows of the csv file are displayed',row_settings)
+            # #you somehow need to make it so that the first 2 options do not exclude each other
+            # #idea: trigger condition even if only  one of them is picked - but you schould be able to pick 
+            # #two at the sametime!?
+            # if row_settings_radio == start_to_stop_rows:
+            #     #TODO: make it so that both picking or not picking the other value produces a result
+            #     # where both values get a value
+            #     start_row = st.number_input('Display from the ...th row on', 0)
+            # #if line_settings_radio== line_output_at_stop:
+            #     stop_row = st.number_input('Display up unto ...th row',0)
+            #     if start_row> stop_row:
+            #         st.write('The row where the output starts comes later than the one where the output stops. In this case the program will ouput the'
+            #         +'the image with all row. Please change the values accordingly if you do not want that.')
+            #     elif start_row == stop_row:
+            #         st.write('The row where the output starts must not be equal to the one where the output stops. In this case the program will ouput the'
+            #         +'the image with all rows. Please change the values accordingly if you do not want that.')
+            #     else:
+            #         data['row_output_from']=start_row
+            #         data['row_output_until']=stop_row
+            # #just making this dependent on first if is not good -> TODO: fix this!
+            # elif  row_settings_radio ==row_output_start:
+            #     number_start_rows = st.number_input('Display first  ... rows',0)
+            #     data['row_output_start']=number_start_rows
+            # elif  row_settings_radio ==row_output_end:
+            #     number_end_rows = st.number_input('Display last ... rows',0)
+            #     data['row_output_end']=number_end_rows
+            # st.write("If any other options than 'display all lines in file' is chosen but all input numbers "+
+            # "are 0, then the execution will be as if 'display all lines in file' had been chosen")
+            # #do you need to do anything in the else case - > no, because then everything else is 
+            # #displayed anyway
+
+            # display_all_columns_in_file = "Display the color for all columns in the csv file"
+            # column_output_start = 'Display first ... columns'
+            # column_output_end = 'Display last ... column'
+            # start_to_stop_columns = 'Display image from column ... to column ...'
+            
+
+            # column_settings = [column_output_start, column_output_end, start_to_stop_columns, display_all_columns_in_file]
+            # column_settings_radio = st.radio('Change the way the columns of the csv file are displayed', column_settings)
+            # #you somehow need to make it so that the first 2 options do not exclude each other
+            # #idea: trigger condition even if only  one of them is picked - but you schould be able to pick 
+            # #two at the sametime!?
+            # if column_settings_radio == start_to_stop_columns:
+            #     reset_columns_and_rows()
+            #     #TODO: make it so that both picking or not picking the other value produces a result
+            #     # where both values get a value
+            #     start_column = st.number_input('Display from the ...th column on', 0)
+            # #if line_settings_radio== line_output_at_stop:
+            #     stop_column = st.number_input('Display up unto ... lines',0)
+            #     if start_column> stop_column:
+            #         st.write('The column where the output starts comes later than the one where the output stops. In this case the program will ouput the'
+            #         +'the image with all columns. Please change the values accordingly if you do not want that.')
+            #     elif start_column == stop_column:
+            #         st.write('The column where the output starts must not be equal to the one where the output stops. In this case the program will ouput the'
+            #         +'the image with all columns. Please change the values accordingly if you do not want that.')
+            #     else:
+            #         data['column_output_from']=start_column
+            #         data['column_output_until']=stop_column
+            # #just making this dependent on first if is not good -> TODO: fix this!
+            # elif  column_settings_radio ==column_output_start:
+            #     reset_columns_and_rows()
+            #     number_start_columns = st.number_input('Display first  ... columns',0)
+            #     data['column_output_start']=number_start_columns
+            # elif  column_settings_radio ==column_output_end:
+            #     reset_columns_and_rows()
+            #     number_end_columns = st.number_input('Display last ... columns',0)
+            #     data['column_output_end']=number_end_columns
+            # st.write("If any other options than 'display all column in file' is chosen but all input numbers "+
+            # "are 0, then the execution will be as if 'display all columns in file' had been chosen")
+            set_height_and_width()
+            set_row_settings()
+            set_column_settings()
+            #right now pretty much all preset values are 0 -> these values mean that nothing needs to be
+            #changed because once you activated the visualization we  are certain you want to see an image            #idea: once something has been chosen, automatically write it into the config file
+            #this also means that you need default settings for them 
+            #why do you add different data blocks to json files, bc right now my file has everything
+            #in the same data
+            st.write("Please note that depending on the used dialect, there may not be as many lines in the file as are given above so we will choose an approximate amount of the total lines")
+        
+            set_colors()
+
+            # with open("mondrian\\colors.json", "w") as jsonfile:
+            #     myJSON = json.dump(data, jsonfile) # Writing to the file
+            #     #print("Write successful")
+            #     jsonfile.close()
+
             image_same= st.checkbox('Do not show results with one color/one recognized data type', True)
             button = st.button('Create visualization')
             if button:
-                # if(choose_sep.find('None') == -1 & choose_quote.find('None') == -1 & choose_esc.find('None') == -1):
-                #     st.write('Starting image creation')
-                #     csv.register_dialect(dialect, delimiter=choose_sep,quotechar=choose_quote, escapechar = choose_esc)
-                #     st.write('dialect registered')
-                #     st.image(manipulate_created_image(table_as_image_better(file_path, dialect),width, height))
-                #     st.write('image has been created')
-                #else:
                     st.write('Starting Loop')
                     go_over_characters(file_path, width, height, character_choices,image_same)
                     #this part is for selecting the quotechar
