@@ -275,6 +275,10 @@ def parse_cell(val, color=False):
     #into it parts which means there is nothing in the value and the value is not a space(this is why 
     # we use if not  val.split())
 
+#llolololollo
+
+
+
     # if not val.split():
     #     st.write("val_split: "+ str(val.split()))
     if not val.split() or val.isspace():
