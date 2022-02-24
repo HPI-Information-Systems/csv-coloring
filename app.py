@@ -38,7 +38,7 @@ def load_data(uploaded_file, nrows, sep, quotechar = '"', escapechar=None):     
     return data
 
 #collect chosen dialect signs in data file + use them for the loops here
-def go_over_characters(file_path, height, width, character_choices, image_same):
+def go_over_characters(file_path, character_choices, image_same):
     #st.write("Go over characters")
     cols = st.columns(3)
     num = 0
@@ -65,19 +65,20 @@ def go_over_characters(file_path, height, width, character_choices, image_same):
                         #cols[0].subheader("#ㅤ")
                         cols[0].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: #')
                     else:
-                        image_all_same_color, image = manipulate_created_image(table_as_image_better(file_path, delimiter=f'{special_characters[separators[i]]}', quotechar=f'{special_characters[quotechars[j]]}', escapechar=f'{special_characters[g]}'),height, width, image_same)
+                        image_all_same_color, image = manipulate_created_image(table_as_image_better(file_path, delimiter=f'{special_characters[separators[i]]}', quotechar=f'{special_characters[quotechars[j]]}', escapechar=f'{special_characters[g]}'), image_same)
+                        #st.write(image_all_same_color)
                         if image_all_same_color:
                             continue
                         cols[0].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: '+ f'{special_characters[escapechars[g]]}')
                         cols[0].image(image)                
                 elif num % 3 == 1:
-                    image_all_same_color, image = manipulate_created_image(table_as_image_better(file_path, delimiter=f'{special_characters[separators[i]]}', quotechar=f'{special_characters[quotechars[j]]}', escapechar=f'{special_characters[g]}'),height, width, image_same)
+                    image_all_same_color, image = manipulate_created_image(table_as_image_better(file_path, delimiter=f'{special_characters[separators[i]]}', quotechar=f'{special_characters[quotechars[j]]}', escapechar=f'{special_characters[g]}'), image_same)
                     if image_all_same_color:
                         continue
                     cols[1].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: '+ f'{special_characters[escapechars[g]]}')
                     cols[1].image(image)       
                 elif num % 3 == 2:
-                    image_all_same_color, image = manipulate_created_image(table_as_image_better(file_path, delimiter=f'{special_characters[separators[i]]}', quotechar=f'{special_characters[quotechars[j]]}', escapechar=f'{special_characters[g]}'),height, width, image_same)
+                    image_all_same_color, image = manipulate_created_image(table_as_image_better(file_path, delimiter=f'{special_characters[separators[i]]}', quotechar=f'{special_characters[quotechars[j]]}', escapechar=f'{special_characters[g]}'), image_same)
                     if image_all_same_color:
                         continue
                     cols[2].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: '+ f'{special_characters[escapechars[g]]}')
@@ -210,12 +211,12 @@ def set_characters():
             choose_all= st.checkbox('Choose all characters', key=9)
             for i in range(0, len(extraspecial_chars)):
                 if choose_all:
-                    if extraspecial_chars[i]=='\\r\\n':
-                        escapechar_choice=cols[i%9].checkbox('\\r\\n',True, key=12)
+                    if extraspecial_chars[i]=='"':
+                        escapechar_choice=cols[i%9].checkbox('"',True, key=12)
                     else:    
                         escapechar_choice=cols[i%9].checkbox(extraspecial_chars[i],True, key=12)
-                elif extraspecial_chars[i]=='\\r\\n':
-                    escapechar_choice=cols[i%9].checkbox('\\r\\n',True, key=12)
+                elif extraspecial_chars[i]=='"':
+                    escapechar_choice=cols[i%9].checkbox('"',True, key=12)
                 else: 
                     escapechar_choice=cols[i%9].checkbox(extraspecial_chars[i], key=12)                
                 choose_escapechars.append(escapechar_choice)
@@ -298,7 +299,7 @@ def set_row_settings():
             row_output_end = 'Display last ... lines'
             start_to_stop_rows = 'Display image from line ... to line ...'
 
-            row_settings = [row_output_start, row_output_end, start_to_stop_rows, display_all_rows_in_file]
+            row_settings = [display_all_rows_in_file, row_output_start, row_output_end, start_to_stop_rows]
             row_settings_radio = st.radio('Change the way the rows of the csv file are displayed',row_settings)
             #you somehow need to make it so that the first 2 options do not exclude each other
             #idea: trigger condition even if only  one of them is picked - but you schould be able to pick 
@@ -344,7 +345,7 @@ def set_column_settings():
             start_to_stop_columns = 'Display image from column ... to column ...'
             
 
-            column_settings = [column_output_start, column_output_end, start_to_stop_columns, display_all_columns_in_file]
+            column_settings = [ display_all_columns_in_file, column_output_start, column_output_end, start_to_stop_columns]
             column_settings_radio = st.radio('Change the way the columns of the csv file are displayed', column_settings)
             #you somehow need to make it so that the first 2 options do not exclude each other
             #idea: trigger condition even if only  one of them is picked - but you schould be able to pick 
@@ -454,8 +455,8 @@ def app():
             st.write('<style>div.row-widget.stRadio>div{flex-direction:row;grid-column-gap:30px;}</style>', unsafe_allow_html=True) #Set alignment of radio buttons
             extraspecial_chars = list(special_characters)
 
-            st.subheader('Select a delimiter (You must select at least one)')
-            cols = st.columns(9)
+            # st.subheader('Select a delimiter (You must select at least one)')
+            # cols = st.columns(9)
 
             character_choices = set_characters()
             #st.write(character_choices)
@@ -562,10 +563,11 @@ def app():
             #     jsonfile.close()
 
             image_same= st.checkbox('Do not show results with one color/one recognized data type', True)
+            #st.write(image_same)
             button = st.button('Create visualization')
             if button:
-                    st.write('Starting Loop')
-                    go_over_characters(file_path, width, height, character_choices,image_same)
+                    #st.write('Starting Loop')
+                    go_over_characters(file_path, character_choices,image_same)
                     #this part is for selecting the quotechar
             else:
                 st.write('You have not pressed the button yet.')

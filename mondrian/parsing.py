@@ -30,15 +30,16 @@ def parse_cell(val, color=False):
         jsonfile.close()
 
     #print('color: '+ str(color))
-    #print('val: '+ str(val))
+    #st.write('val: '+ str(val))
     
     #colors that field white if it is a space or if there is nothing in the value that can be split
     #into it parts which means there is nothing in the value and the value is not a space(this is why 
     # we use if not  val.split())
 
-    # if not val.split():
+    # if not val.split() or val.isspace():
     #     st.write("val_split: "+ str(val.split()))
     if not val.split() or val.isspace():
+        st.write('val: '+ str(val))
         #print('empty:'+ str(val))
         return colour.Color(data['EMPTY']).rgb
 
@@ -69,25 +70,25 @@ def parse_cell(val, color=False):
 
     try:
         int(val)
-        #print('int:'+ str(val))
+        print('int:'+ str(val))
         return colour.Color(data['INTEGER']).rgb
     except ValueError:
         pass
     try:
         float(val)
-        #print('float:'+ str(val))
+        print('float:'+ str(val))
         return colour.Color(data['FLOAT']).rgb
     except ValueError:
         pass
     try:
         datetime.time.fromisoformat(val)
-        #print('time :'+ str(val))
+        print('time :'+ str(val))
         return colour.Color(data['TIME']).rgb
     except ValueError:
         pass
     try:
         dateutil.parser.parse(val, parserinfo=customDateParserInfo())
-        #print('date :'+ str(val))
+        print('date :'+ str(val))
         return colour.Color(data['DATE']).rgb
 
     except ValueError:

@@ -53,10 +53,9 @@ def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False,
                 csv.field_size_limit(maxInt)
                 break
             except OverflowError:
-                st.write(**formatparams)
                 #TODO: Find out if we are only using this one in case includes taht you have to input a certain number of files at the start of an OverflowError
-                st.write("OverflowError")
-                st.write(maxInt)
+                #st.write("OverflowError")
+                #st.write(maxInt)
                 maxInt = int(maxInt/10)
                 
             
@@ -68,6 +67,7 @@ def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False,
             # here so that we do not waste any tim parsing them!?
             #print(line)
             result = [parse_cell(val=val, color=color) for val in line]
+            st.write(result)
             if cell_length:
                 result = [r for idx, r in enumerate(result) for _ in range(len(line[idx]))]
 
@@ -187,52 +187,53 @@ def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False,
         new_line=[]
         val_num=0
         for val in line:
-            #print(val)
-            if data['column_output_start'] != 0 :
-                if val_num> data['column_output_start']:
-                    val_num = val_num+1
-                    max_size = max_size - data['column_output_start']                 
-                    continue
-            if data['column_output_end'] != 0| (data['column_output_from']==0 & data['column_output_until']!=0) :
-                if len(line)-val_num <= data['column_output_end']:
-                    val_num = val_num+1    
-                    max_size = data['column_output_end']      
-                    continue
+            # #print(val)
+            # if data['column_output_start'] != 0 :
+            #     if val_num> data['column_output_start']:
+            #         val_num = val_num+1
+            #         max_size = max_size - data['column_output_start']                 
+            #         continue
+            # if data['column_output_end'] != 0| (data['column_output_from']==0 & data['column_output_until']!=0) :
+            #     if len(line)-val_num <= data['column_output_end']:
+            #         val_num = val_num+1    
+            #         max_size = data['column_output_end']      
+            #         continue
 
-            if data['column_output_from']!=0 & data['column_output_until']!=0:
-                #in this part we are adapting the given row numbers to row numbers of the file according to dialect
-                if data['column_output_from']> len(line):
-                    st.write("The file as read by the given dialect has fewer rows than the row number given as the output start. We will try"
-                    +'to diplay an approximate selection from the file')
+            # if data['column_output_from']!=0 & data['column_output_until']!=0:
+            #     #in this part we are adapting the given row numbers to row numbers of the file according to dialect
+            #     if data['column_output_from']> len(line):
+            #         st.write("The file as read by the given dialect has fewer rows than the row number given as the output start. We will try"
+            #         +'to diplay an approximate selection from the file')
 
-                    st.write("column_output_from: " + data['column_output_from'])
-                    st.write("column_output_until: " + data['column_output_untiil'])
+            #         st.write("column_output_from: " + data['column_output_from'])
+            #         st.write("column_output_until: " + data['column_output_untiil'])
 
-                    difference = data['column_output_from']/data['column_output_until']
-                    adapted_start_row = math.ceil(difference * len(line))
-                    st.write("difference: "+ difference + " adapted_start_row: "+adapted_start_row)
-                    data['column_output_from'] = adapted_start_row
-                    data['column_output_until'] = len(line)-1
-                    st.write("column_output_from: " + data['column_output_from'])
-                    st.write("column_output_until: " + data['column_output_untiil'])
-                    val_num = val_num+1                    
-                elif data['column_output_until']> len(img):
-                    st.write("The file as read by the given dialect has fewer rows than the row number given as the output end. We will try"
-                    +'to diplay an approximate selection from the file')
-                    difference = data['column_output_until'] -(len(img)-1)
-                    data['column_output_from'] = math.max(0, data['column_output_from']-difference )
-                    data['column_output_until'] = len(img)-1
-                    val_num = val_num+1   
-                    max_size = ['column_output_until']- ['column_output_from']
+            #         difference = data['column_output_from']/data['column_output_until']
+            #         adapted_start_row = math.ceil(difference * len(line))
+            #         st.write("difference: "+ difference + " adapted_start_row: "+adapted_start_row)
+            #         data['column_output_from'] = adapted_start_row
+            #         data['column_output_until'] = len(line)-1
+            #         st.write("column_output_from: " + data['column_output_from'])
+            #         st.write("column_output_until: " + data['column_output_untiil'])
+            #         val_num = val_num+1                    
+            #     elif data['column_output_until']> len(img):
+            #         st.write("The file as read by the given dialect has fewer rows than the row number given as the output end. We will try"
+            #         +'to diplay an approximate selection from the file')
+            #         difference = data['column_output_until'] -(len(img)-1)
+            #         data['column_output_from'] = math.max(0, data['column_output_from']-difference )
+            #         data['column_output_until'] = len(img)-1
+            #         val_num = val_num+1   
+            #         max_size = ['column_output_until']- ['column_output_from']
                                  
                     
-            if val_num< data['column_output_from']:
-                val_num = val_num+1                    
-                continue
+            # if val_num< data['column_output_from']:
+            #     val_num = val_num+1                    
+            #     continue
 
-            if val_num> data['column_output_until']:
-                val_num = val_num+1                    
-                continue
+            # if val_num> data['column_output_until']:
+            #     val_num = val_num+1                    
+            #     continue
+
 
             val = [255* val[0], 255* val[1], 255* val[2]]
             new_line.append(val)
@@ -242,9 +243,16 @@ def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False,
             # else:
             #     val = val+1
         line=new_line
+        print(max_size-len(line))
         line += [[255, 255, 255]] * (max_size - len(line))
+        st.write(line)
         new_img.append(line)
         line_number= line_number + 1
+
+    with open("colors.json", "w") as jsonfile:
+        myJSON = json.dump(data, jsonfile) # Writing to the file
+        #print("Write successful")
+        jsonfile.close()
 
     img= new_img
 
@@ -276,33 +284,54 @@ def manipulate_created_image_deprecated(img_file):
     return img_file
 
 #img_same regulates whether pictures with one color are sshown in the output or not
-def manipulate_created_image(img_file, height=200, width=200, image_same=True):
+def manipulate_created_image(img_file, image_same=True):
     #check if the colors in the picture are all the same
-
+    #st.write("image_same: "+str(image_same))
+    with open("C:\\Users\\Ella\\Ella-Kopie\\Studium\\Semester9\\Job\\Mondrian extension for CSV Visualization\\mondrian\\colors.json", "r") as jsonfile:
+        data = json.load(jsonfile) # Reading the file
+        #print("Read successful")
+        jsonfile.close()
     #this loop postulates that if there a color in the image file that is different to the first color,
     #there are >2 colors in the image -> the image has >1 colors
     #print(img_file)
+
+    st.write(img_file)
     img_colors_all_same = False
     if image_same:
-        img_colors_all_same = True
-        #first_list = img_file[0]
-        first_element = img_file[0][0]
-        for list in img_file:
-            #first_element = list[0]
-            for element in list:
-                if first_element != element:
-                    img_colors_all_same = False  
-            # if list != first_list:
-            #     img_colors_all_same = False
+        img_colors_all_same = check_if_image_same(img_file)
+        # img_colors_all_same = True
+        # #first_list = img_file[0]
+        # first_element = img_file[0][0]
+        # for list in img_file:
+        #     #first_element = list[0]
+        #     for element in list:
+        #         if first_element != element:
+        #             img_colors_all_same = False  
+        #     # if list != first_list:
+        #     #     img_colors_all_same = False
 
-    img = np.array(img_file,dtype= np.int8)
+    img = np.array(img_file,dtype=np.int8)
     img_file = Image.fromarray(img, 'RGB')
-    img_file = img_file.resize((height, width), resample=Image.NEAREST)
+    img_file = img_file.resize((data['height'], data['width']), resample=Image.NEAREST)
     enhancer = ImageEnhance.Brightness(img_file)
     factor = 0.97
     img_file = enhancer.enhance(factor)
 
     return img_colors_all_same,img_file
+
+def check_if_image_same(img_file):
+    img_colors_all_same = True
+    #first_list = img_file[0]
+    first_element = img_file[0][0]
+    for list in img_file:
+        #first_element = list[0]
+        for element in list:
+            if first_element != element:
+                img_colors_all_same = False  
+    # if list != first_list:
+    #     img_colors_all_same = False
+    return img_colors_all_same
+
 
 def create_image(table_file_path, separator=None, quotechar=None, escapechar=None , color=False, cell_length=False, **formatparams):
     img1 = table_as_image_better(table_file_path, separator, quotechar, escapechar, color, cell_length, **formatparams)
