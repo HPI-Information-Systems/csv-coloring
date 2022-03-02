@@ -31,15 +31,24 @@ from parsing import parse_cell
 from partition import find_external_lines, partition_contour, find_virtual_lines
 import clevercsv
 
+import os
 def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False, **formatparams):
     #print("starting function")
     img = []
     last_nonempty = 0
     #print(color)
+    line=""
+    # this checks whether file is empty or not
+    #if the file is empty, we want to just give out a white rectangle
+    if os.stat(path).st_size==0:
+        st.write("You entered an empty file.")
+        img= [[(255,255,255)]]
+        return img
     #st.write(str(formatparams))
     with open(path, 'r', encoding="UTF-8", errors="ignore") as csvfile:
         #print('start reading')
         tablereader = csv.reader(csvfile, dialect,**formatparams)
+        st.write(tablereader)
         max_size = 0
 
         #the following part of the code ensures that even csv file swith huge fields can be read
@@ -67,7 +76,7 @@ def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False,
             # here so that we do not waste any tim parsing them!?
             #print(line)
             result = [parse_cell(val=val, color=color) for val in line]
-            st.write(result)
+            #st.write(result)
             if cell_length:
                 result = [r for idx, r in enumerate(result) for _ in range(len(line[idx]))]
 
@@ -243,9 +252,9 @@ def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False,
             # else:
             #     val = val+1
         line=new_line
-        print(max_size-len(line))
+        #print(max_size-len(line))
         line += [[255, 255, 255]] * (max_size - len(line))
-        st.write(line)
+        #st.write(line)
         new_img.append(line)
         line_number= line_number + 1
 
@@ -259,9 +268,6 @@ def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False,
     return img
     
     #moved this part to its own file for more control over image properties lik size
-
-    
-#moved this part to its own file for more control over image properties lik size
     
 def manipulate_created_image_deprecated(img_file):
     img_file = img_file.resize((200, 200), resample=Image.NEAREST)
@@ -295,7 +301,7 @@ def manipulate_created_image(img_file, image_same=True):
     #there are >2 colors in the image -> the image has >1 colors
     #print(img_file)
 
-    st.write(img_file)
+    #st.write(img_file)
     img_colors_all_same = False
     if image_same:
         img_colors_all_same = check_if_image_same(img_file)
@@ -322,6 +328,14 @@ def manipulate_created_image(img_file, image_same=True):
 def check_if_image_same(img_file):
     img_colors_all_same = True
     #first_list = img_file[0]
+    st.write(len(img_file))
+    #st.write(img_file)
+    # if img_file[0]=="":#& len(img_file)==1:
+    # #     return img_colors_all_same
+    # if os.stat(img_file).st_size == 0:
+    #     return img_colors_all_same
+    if len(img_file)==0:
+        return img_colors_all_same
     first_element = img_file[0][0]
     for list in img_file:
         #first_element = list[0]

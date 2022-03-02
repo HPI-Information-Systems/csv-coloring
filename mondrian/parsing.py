@@ -39,7 +39,7 @@ def parse_cell(val, color=False):
     # if not val.split() or val.isspace():
     #     st.write("val_split: "+ str(val.split()))
     if not val.split() or val.isspace():
-        st.write('val: '+ str(val))
+        #st.write('val: '+ str(val))
         #print('empty:'+ str(val))
         return colour.Color(data['EMPTY']).rgb
 
@@ -70,25 +70,25 @@ def parse_cell(val, color=False):
 
     try:
         int(val)
-        print('int:'+ str(val))
+        #print('int:'+ str(val))
         return colour.Color(data['INTEGER']).rgb
     except ValueError:
         pass
     try:
         float(val)
-        print('float:'+ str(val))
+        #print('float:'+ str(val))
         return colour.Color(data['FLOAT']).rgb
     except ValueError:
         pass
     try:
         datetime.time.fromisoformat(val)
-        print('time :'+ str(val))
+        #print('time :'+ str(val))
         return colour.Color(data['TIME']).rgb
     except ValueError:
         pass
     try:
         dateutil.parser.parse(val, parserinfo=customDateParserInfo())
-        print('date :'+ str(val))
+        #print('date :'+ str(val))
         return colour.Color(data['DATE']).rgb
 
     except ValueError:
@@ -100,13 +100,13 @@ def parse_cell(val, color=False):
         pass
 
     if val.isupper() & (str(data['differentiate_all_uppercase'])=="True"):
-        print('isupper :'+ str(val))
+        #print('isupper :'+ str(val))
         return colour.Color(data['STRING_UPPER']).rgb
     elif val.islower() & (str(data['differentiate_all_lowercase'])=="True"):
-        print('islower :'+ str(val))
+        #print('islower :'+ str(val))
         return colour.Color(data['STRING_LOWER']).rgb
     elif val.istitle() & (str(data['differentiate_all_titles'])=="True"):
-        print('title :'+ str(val))
+        #print('title :'+ str(val))
         return colour.Color(data['STRING_TITLE']).rgb
 
     #print('generic :'+ str(val))
