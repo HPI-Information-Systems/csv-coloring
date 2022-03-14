@@ -1,11 +1,12 @@
 import sys
 sys.path.append('C:\\Users\\Ella\\Ella-Kopie\\Studium\\Semester9\\Job\\Mondrian extension for CSV Visualization\\mondrian')
 from mondrian.visualization import manipulate_created_image, create_image, table_as_image_better,manipulate_created_image
+from mondrain.parsing import parse_cell
 import pandas as pd
 import json
 import colour
 
-def test_correct_coloring_data_type():
+def test_correct_coloring():
     with open("colors.json", "r") as jsonfile:
         data = json.load(jsonfile) # Reading the file
         print("Read successful")
@@ -37,7 +38,6 @@ def test_correct_coloring_data_type():
 
     #df = pd.read_csv('C:\\Users\\Ella\\Ella-Kopie\\Studium\\Semester9\\Job\\Mondrian extension for CSV Visualization\\all_data_types.csv')
     test_img = table_as_image_better('C:\\Users\\Ella\\Ella-Kopie\\Studium\\Semester9\\Job\\Mondrian extension for CSV Visualization\\all_data_types.csv')
-    print(test_img)
     colors= [[colour.Color(data['INTEGER']).rgb, colour.Color(data['STRING_GENERIC']).rgb, colour.Color(data['STRING_GENERIC']).rgb,colour.Color(data['STRING_UPPER']).rgb, colour.Color(data['STRING_GENERIC']).rgb,colour.Color(data['DATE']).rgb, colour.Color(data['FLOAT']).rgb, colour.Color(data['TIME']).rgb],[colour.Color(data['INTEGER']).rgb, colour.Color(data['STRING_GENERIC']).rgb, colour.Color(data['STRING_TITLE']).rgb,colour.Color(data['STRING_UPPER']).rgb, colour.Color(data['STRING_LOWER']).rgb,colour.Color(data['DATE']).rgb,colour.Color(data['FLOAT']).rgb, colour.Color(data['TIME']).rgb]]
     correct_result=[]
     for line in colors:

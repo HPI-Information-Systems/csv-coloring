@@ -253,11 +253,22 @@ def set_colors():
             check_lowercase_strings = st.checkbox('Show all-lowercase strings in their own color')
             check_uppercase_strings = st.checkbox('Show all-uppercase strings in their own color')
             check_title_strings = st.checkbox('Show title strings(at the beginning of each word is a capital letter  and nowhere else) in their own color')
+            check_time = st.checkbox('Show times in their own color')
+            check_date = st.checkbox('Show dates in their own color')
+            check_separator_bars=st.checkbox('Divide columns with black bars')
+            check_separator_rows=st.checkbox('Divide rows with black row')
+
 
             data['STRING_GENERIC']= string_color
             data['INTEGER']= int_color
             data['FLOAT']=  float_color 
             
+            if check_separator_bars:
+                data['separator_bars']= 'True'
+
+            if check_separator_rows:
+                data['separator_rows']= 'True'
+
             if check_lowercase_strings:
                 lowercase_color = cols[0].color_picker(                             #  set float color
                     'Lowercase string color', 
@@ -282,6 +293,25 @@ def set_colors():
                 )        
                 data['STRING_TITLE']=  title_color 
                 data['differentiate_alle_titles'] = "True"
+
+            if check_date:    
+                title_color = cols[2].color_picker(                             #  set float color
+                    'Date color', 
+                    value="#9370db"
+                )        
+                data['DATE']=  title_color 
+                data['differentiate_dates'] = "True"
+
+
+            if check_time:    
+                title_color = cols[2].color_picker(                             #  set float color
+                    'Time color', 
+                    value="#ba55d3"
+                )        
+                data['TIME']=  title_color 
+                data['differentiate_times'] = "True"
+
+
 
             with open("mondrian\\colors.json", "w") as jsonfile:
                 myJSON = json.dump(data, jsonfile) # Writing to the file
@@ -326,6 +356,7 @@ def set_row_settings():
             elif  row_settings_radio ==row_output_end:
                 number_end_rows = st.number_input('Display last ... rows',0)
                 data['row_output_end']=number_end_rows
+            
             st.write("If any other options than 'display all lines in file' is chosen but all input numbers "
             +"are 0, then the execution will be as if 'display all lines in file' had been chosen")
             with open("mondrian\\colors.json", "w") as jsonfile:
@@ -396,7 +427,51 @@ def set_height_and_width():
                 #print("Write successful")
                 jsonfile.close()
 
+def reset_config_file():
+    #TODO:this file lacks the settings for the displayed lines, you will hav to add them once they work
+    with open("mondrian\\colors.json", "r") as jsonfile:
+                data = json.load(jsonfile) # Reading the file
+                print("Read successful")
+                jsonfile.close()
+    string_color ='#90ee90'
+    int_color ='#ffb6c1'        
+    float_color ='#add8e6'
+
+    data['STRING_GENERIC']= string_color
+    data['INTEGER']= int_color
+    data['FLOAT']=  float_color 
+            
+            
+    lowercase_color = '#32cd32'
+    data['STRING_LOWER']=  lowercase_color 
+    data['differentiate_all_uppercase'] = "False"
+
+    uppercase_color = '#00ff00'
+    data['STRING_UPPER']=  uppercase_color 
+    data['differentiate_all_uppercase'] = "False"
+
+    title_color = '#00ff7f'
+    data['STRING_TITLE']=  title_color 
+    data['differentiate_alle_titles'] = "False"
+
+    date_color = "#9370db"
+    data['DATE']=  date_color 
+    data['differentiate_dates'] = "False"
+
+    time_color = "#ba55d3"
+    data['TIME']=  time_color 
+    data['differentiate_times'] = "False"
+
+    data['separator_bars']= 'False'
+    data['separator_rows']= 'False'
+
+    with open("mondrian\\colors.json", "w") as jsonfile:
+                myJSON = json.dump(data, jsonfile) # Writing to the file
+                #print("Write successful")
+                jsonfile.close()
+
 def app():
+    reset_config_file()
     st.sidebar.title('Select a tool')
     page = st.sidebar.radio('', ('CSV Annotation check', 'CSV Dialect detection'))
     st.title(page)
@@ -546,7 +621,7 @@ def app():
             # st.write("If any other options than 'display all column in file' is chosen but all input numbers "+
             # "are 0, then the execution will be as if 'display all columns in file' had been chosen")
             set_height_and_width()
-            set_row_settings()
+            #set_row_settings()
             set_column_settings()
             #right now pretty much all preset values are 0 -> these values mean that nothing needs to be
             #changed because once you activated the visualization we  are certain you want to see an image            #idea: once something has been chosen, automatically write it into the config file

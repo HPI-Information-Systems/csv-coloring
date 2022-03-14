@@ -20,16 +20,13 @@ class customDateParserInfo(dateutil.parser.parserinfo):
 #3. differentiate_all_titles: strings where every word starts with an uppercase letter
 # to be differently coloured by the algorithm
 
-# def parse_cell(val, color=False, differentiate_all_uppercase=False, differentiate_all_lowercase=False, 
-# differentiate_all_titles=False,string_color=colour.Color("lightgreen").rgb, int_color=colour.Color("lightpink").rgb,float_color=colour.Color("mediumvioletred").rgb):
-def parse_cell(val, color=False):    
-    #st.write(val)
+def parse_cell(val, color=False):
+
     with open("C:\\Users\\Ella\\Ella-Kopie\\Studium\\Semester9\\Job\\Mondrian extension for CSV Visualization\\mondrian\\colors.json", "r") as jsonfile:
         data = json.load(jsonfile) # Reading the file
         #print("Read successful")
         jsonfile.close()
 
-    #print('color: '+ str(color))
     #st.write('val: '+ str(val))
     
     #colors that field white if it is a space or if there is nothing in the value that can be split
@@ -39,8 +36,9 @@ def parse_cell(val, color=False):
     # if not val.split() or val.isspace():
     #     st.write("val_split: "+ str(val.split()))
     if not val.split() or val.isspace():
+        #st.write("val_split: "+ str(val.split()))
         #st.write('val: '+ str(val))
-        #print('empty:'+ str(val))
+        #st.write('empty:'+ str(val))
         return colour.Color(data['EMPTY']).rgb
 
     if not color:
@@ -80,24 +78,27 @@ def parse_cell(val, color=False):
         return colour.Color(data['FLOAT']).rgb
     except ValueError:
         pass
-    try:
-        datetime.time.fromisoformat(val)
-        #print('time :'+ str(val))
-        return colour.Color(data['TIME']).rgb
-    except ValueError:
-        pass
-    try:
-        dateutil.parser.parse(val, parserinfo=customDateParserInfo())
-        #print('date :'+ str(val))
-        return colour.Color(data['DATE']).rgb
+    if str(data['differentiate_times'])=="True":
+        try:
+            datetime.time.fromisoformat(val)
+            #print('time :'+ str(val))
+            return colour.Color(data['TIME']).rgb
+        except ValueError:
+            pass
+    if str(data['differentiate_dates'])=="True":
+        try:
+            dateutil.parser.parse(val, parserinfo=customDateParserInfo())
+            #print('date :'+ str(val))
+            return colour.Color(data['DATE']).rgb
 
-    except ValueError:
-        pass
-    except TypeError:
-        pass
+        except ValueError:
+            pass
+        except TypeError:
+            pass
+        except OverflowError:
+            pass
     #This prevents the error message 'OverflowError: Python int too large to convert to C long'
-    except OverflowError:
-        pass
+
 
     if val.isupper() & (str(data['differentiate_all_uppercase'])=="True"):
         #print('isupper :'+ str(val))
@@ -109,7 +110,10 @@ def parse_cell(val, color=False):
         #print('title :'+ str(val))
         return colour.Color(data['STRING_TITLE']).rgb
 
+
     #print('generic :'+ str(val))
     #return string_color
     #st.write(data['STRING_GENERIC'])
+    # if data['separator_bars']=='True':
+    #     return colour.Color(data['STRING_GENERIC']).rgb, colour.Color(data['EMPTY']).rgb
     return colour.Color(data['STRING_GENERIC']).rgb

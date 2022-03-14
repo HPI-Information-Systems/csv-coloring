@@ -1,2 +1,15 @@
 integer,string,title_string,uppercase_string,lowercase_string,date,float,time
-1,Mark,Captain America,STRING,string,2019-12-04,1.44,13:45:02
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
