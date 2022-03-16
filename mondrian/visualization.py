@@ -28,7 +28,7 @@ def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False,
     img = []
     last_nonempty = 0
     #print(color)
-    line=""
+    #line=""
     # this checks whether file is empty or not
     #if the file is empty, we want to just give out a white rectangle
     if os.stat(path).st_size==0:
@@ -59,25 +59,30 @@ def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False,
                 maxInt = int(maxInt/10)
                 
             
-            for idx, line in enumerate(tablereader):
-                if line != [''] * len(line):
-                    last_nonempty = idx
+        # for idx, line in enumerate(tablereader):
+        #     #loop for idenifying last nonempty line + for parsing the colors of each line that rerader reads
+        #     if line != [''] * len(line):
+        #         last_nonempty = idx
 
-            #TODO: maybe move the programm that on demand only gives out certain amount of rows/columns
-            # here so that we do not waste any tim parsing them!?
-            #print(line)
-            result = [parse_cell(val=val, color=color) for val in line]
-            #st.write(result)
+        #     #TODO: maybe move the programm that on demand only gives out certain amount of rows/columns
+        #     # here so that we do not waste any tim parsing them!?
+        #     #print(line)
+        #     st.write('parsing starts')
+        #     result = [parse_cell(val=val, color=color) for val in line]
+        #     #st.write(result)
+        #     print('result: '+ str(result))
 
-            #cell_length creates image where columns are sozed according to length of their content
-            if cell_length:
-                result = [r for idx, r in enumerate(result) for _ in range(len(line[idx]))]
+        #         #cell_length creates image where columns are sized according to length of their content
+        #     if cell_length:
+        #         result = [r for idx, r in enumerate(result) for _ in range(len(line[idx]))]
 
-            if len(result) > max_size:
-                max_size = len(result)
+        #     if len(result) > max_size:
+        #         max_size = len(result)
 
-            img.append(result)
+        #     img.append(result)
+        #     #loop ends
 
+        img, last_nonempty = parse_file(tablereader, cell_length,color)
     img = img[:last_nonempty + 1][:]
 
     #print(max_size)
@@ -265,9 +270,43 @@ def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False,
     st.write(new_img)
     img= new_img
 
+    #assert len(img)==2
     return img
     
     #moved this part to its own file for more control over image properties lik size
+
+def parse_file(csv_reader, cell_length, color):
+    img = []
+    max_size = 0
+    last_nonempty=0
+
+    for idx, line in enumerate(csv_reader):
+    #loop for idenifying last nonempty line + for parsing the colors of each line that rerader reads
+        if line != [''] * len(line):
+            last_nonempty = idx
+
+        #TODO: maybe move the programm that on demand only gives out certain amount of rows/columns
+        # here so that we do not waste any tim parsing them!?
+        #print(line)
+        st.write('parsing starts')
+        result = [parse_cell(val=val, color=color) for val in line]
+        #st.write(result)
+        print('result: '+ str(result))
+
+        #cell_length creates image where columns are sized according to length of their content
+        if cell_length:
+            result = [r for idx, r in enumerate(result) for _ in range(len(line[idx]))]
+
+        if len(result) > max_size:
+            max_size = len(result)
+
+        img.append(result)
+        #loop ends
+
+    return img,last_nonempty
+
+#I have separated this from the visualization function to avoid accidentally messing up the indentation
+
 
 #img_same regulates whether pictures with one color are sshown in the output or not
 def manipulate_created_image(img_file, image_same=True):

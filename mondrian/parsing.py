@@ -27,7 +27,7 @@ def parse_cell(val, color=False):
         #print("Read successful")
         jsonfile.close()
 
-    #st.write('val: '+ str(val))
+    st.write('val: '+ str(val))
     
     #colors that field white if it is a space or if there is nothing in the value that can be split
     #into it parts which means there is nothing in the value and the value is not a space(this is why 
