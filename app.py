@@ -7,7 +7,7 @@ import sys
 
 from streamlit.elements.utils import check_callback_rules
 sys.path.append('C:\\Users\\Ella\\Ella-Kopie\\Studium\\Semester9\\Job\\Mondrian extension for CSV Visualization\\mondrian')
-from mondrian.visualization import manipulate_created_image, create_image, table_as_image_better,manipulate_created_image
+from mondrian.visualization import manipulate_created_image, create_image, table_as_image_better,manipulate_created_image, count_lines_for_dialect
 import os
 import easygui
 import csv
@@ -19,6 +19,7 @@ import colour
 #i have added the empty string  at the start
 special_characters = ['!', '"', '$', '#', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~','','\\r\\n']
 
+@st.cache(ttl= 24*3600, max_entries= 20) 
 def open_file():
     try:
         file_path = easygui.fileopenbox('Upload your CSV File')
@@ -31,6 +32,7 @@ def open_file():
 
 #rows are probably the rows that are supposed to be loaded
 #sep is the separator
+@st.cache(ttl= 24*3600, max_entries= 20) 
 def load_data(uploaded_file, nrows, sep, quotechar = '"', escapechar=None):                                          #  load data from csv file
 #def load_data(uploaded_file, nrows, sep):                                          #  load data from csv file#
     #data = pd.read_csv(uploaded_file, sep=sep, nrows=nrows, header=None, quotechar =quotechar, escapechar=escapechar)           #  read csv file
@@ -38,6 +40,7 @@ def load_data(uploaded_file, nrows, sep, quotechar = '"', escapechar=None):     
     return data
 
 #collect chosen dialect signs in data file + use them for the loops here
+@st.cache(ttl= 24*3600, max_entries= 20) 
 def go_over_characters(file_path, character_choices, image_same):
     #st.write("Go over characters")
     cols = st.columns(3)
@@ -89,7 +92,7 @@ def go_over_characters(file_path, character_choices, image_same):
 def reset_columns_and_rows():
     with open("mondrian\\colors.json", "r") as jsonfile:
         data = json.load(jsonfile) # Reading the file
-        print("Read successful")
+        #print("Read successful")
         jsonfile.close()
     
     data['row_output_from']=0
@@ -107,7 +110,7 @@ def reset_columns_and_rows():
         #print("Write successful")
         jsonfile.close()
            
-
+@st.cache(ttl= 24*3600, max_entries= 20) 
 def highlight_cell(cell_value, int_color, float_color, string_color):
     highlightNone = 'background-color: lightgrey;'                  #  empty cell color
     highlightInt = 'background-color: ' + int_color + ';'           #  integer cell color       
@@ -129,7 +132,7 @@ def highlight_cell(cell_value, int_color, float_color, string_color):
     
     return highlightString
 
-
+@st.cache(ttl= 24*3600, max_entries= 20) 
 def check_path(file_path):
     if os.path.isfile(file_path):
         return True
@@ -142,6 +145,7 @@ def append_existing_file(uploaded_sep_file, uploaded_file, sep):
     new_row.to_csv(f'{df}', mode='a', header=False,)
     return df
 
+@st.cache(ttl= 24*3600, max_entries= 20) 
 def set_characters():
             st.subheader('Select a delimiter (You must select at least one)')
             cols = st.columns(9)
@@ -230,10 +234,11 @@ def set_characters():
 
             return character_choices
 
+@st.cache(ttl= 24*3600, max_entries= 20) 
 def set_colors():
             with open("mondrian\\colors.json", "r") as jsonfile:
                 data = json.load(jsonfile) # Reading the file
-                print("Read successful")
+                #print("Read successful")
                 jsonfile.close()
             st.sidebar.subheader('Select the colors for the data types')
             cols = st.sidebar.columns(3)      
@@ -322,7 +327,7 @@ def set_row_settings():
 
             with open("mondrian\\colors.json", "r") as jsonfile:
                 data = json.load(jsonfile) # Reading the file
-                print("Read successful")
+                #print("Read successful")
                 jsonfile.close()
             display_all_rows_in_file = "Display the color for alle lines in the csv file"
             row_output_start = 'Display first ... lines'
@@ -342,7 +347,7 @@ def set_row_settings():
                 stop_row = st.number_input('Display up unto ...th row',0)
                 if start_row> stop_row:
                     st.write('The row where the output starts comes later than the one where the output stops. In this case the program will ouput the'
-                    +'the image with all row. Please change the values accordingly if you do not want that.')
+                    +'the image with all rows. Please change the values accordingly if that is undesired.')
                 elif start_row == stop_row:
                     st.write('The row where the output starts must not be equal to the one where the output stops. In this case the program will ouput the'
                     +'the image with all rows. Please change the values accordingly if you do not want that.')
@@ -368,14 +373,13 @@ def set_column_settings():
 
             with open("mondrian\\colors.json", "r") as jsonfile:
                 data = json.load(jsonfile) # Reading the file
-                print("Read successful")
+                #print("Read successful")
                 jsonfile.close()
             display_all_columns_in_file = "Display the color for all columns in the csv file"
             column_output_start = 'Display first ... columns'
             column_output_end = 'Display last ... column'
             start_to_stop_columns = 'Display image from column ... to column ...'
             
-
             column_settings = [ display_all_columns_in_file, column_output_start, column_output_end, start_to_stop_columns]
             column_settings_radio = st.radio('Change the way the columns of the csv file are displayed', column_settings)
             #you somehow need to make it so that the first 2 options do not exclude each other
@@ -385,8 +389,10 @@ def set_column_settings():
                 reset_columns_and_rows()
                 #TODO: make it so that both picking or not picking the other value produces a result
                 # where both values get a value
+
                 start_column = st.number_input('Display from the ...th column on', 0)
             #if line_settings_radio== line_output_at_stop:
+                #last_file_column = count_lines_for_dialect(file_path)
                 stop_column = st.number_input('Display up unto ... lines',0)
                 if start_column> stop_column:
                     st.write('The column where the output starts comes later than the one where the output stops. In this case the program will ouput the'
@@ -394,7 +400,7 @@ def set_column_settings():
                 elif start_column == stop_column:
                     st.write('The column where the output starts must not be equal to the one where the output stops. In this case the program will ouput the'
                     +'the image with all columns. Please change the values accordingly if you do not want that.')
-                else:
+                else: 
                     data['column_output_from']=start_column
                     data['column_output_until']=stop_column
             #just making this dependent on first if is not good -> TODO: fix this!
@@ -413,26 +419,27 @@ def set_column_settings():
                 #print("Write successful")
                 jsonfile.close()
 
+@st.cache(ttl= 24*3600, max_entries= 20) 
 def set_height_and_width():
-            with open("mondrian\\colors.json", "r") as jsonfile:
-                data = json.load(jsonfile) # Reading the file
-                print("Read successful")
-                jsonfile.close()
-            height = st.number_input('Height of generated picture',200)
-            data['height']= height
-            width = st.number_input('Width of generated picture', 200)
-            data['width'] = width
-            with open("mondrian\\colors.json", "w") as jsonfile:
-                myJSON = json.dump(data, jsonfile) # Writing to the file
-                #print("Write successful")
-                jsonfile.close()
+    with open("mondrian\\colors.json", "r") as jsonfile:
+        data = json.load(jsonfile) # Reading the file
+        #print("Read successful")
+        jsonfile.close()
+    height = st.number_input('Height of generated picture',200)
+    data['height']= height
+    width = st.number_input('Width of generated picture', 200)
+    data['width'] = width
+    with open("mondrian\\colors.json", "w") as jsonfile:
+        myJSON = json.dump(data, jsonfile) # Writing to the file
+        #print("Write successful")
+        jsonfile.close()
 
 def reset_config_file():
     #TODO:this file lacks the settings for the displayed lines, you will hav to add them once they work
     with open("mondrian\\colors.json", "r") as jsonfile:
-                data = json.load(jsonfile) # Reading the file
-                print("Read successful")
-                jsonfile.close()
+        data = json.load(jsonfile) # Reading the file
+        #print("Read successful")
+        jsonfile.close()
     string_color ='#90ee90'
     int_color ='#ffb6c1'        
     float_color ='#add8e6'
@@ -440,7 +447,6 @@ def reset_config_file():
     data['STRING_GENERIC']= string_color
     data['INTEGER']= int_color
     data['FLOAT']=  float_color 
-            
             
     lowercase_color = '#32cd32'
     data['STRING_LOWER']=  lowercase_color 
@@ -465,10 +471,13 @@ def reset_config_file():
     data['separator_bars']= 'False'
     data['separator_rows']= 'False'
 
+    data['row_output_from']= 0
+    data['row_output_until']= 0
+
     with open("mondrian\\colors.json", "w") as jsonfile:
-                myJSON = json.dump(data, jsonfile) # Writing to the file
-                #print("Write successful")
-                jsonfile.close()
+        myJSON = json.dump(data, jsonfile) # Writing to the file
+        #print("Write successful")
+        jsonfile.close()
 
 def app():
     reset_config_file()
@@ -520,10 +529,6 @@ def app():
             data = load_data(file_path,sep=selected_separator, nrows=rowsToShow, quotechar=selected_quoting_type, escapechar= selected_seperating_type)
             st.dataframe(data.style.applymap(lambda x:highlight_cell(x,int_color, float_color, string_color )))               #  display data in table with highlighted cells
         elif page == 'CSV Dialect detection':
-            # st.sidebar.subheader('Remember the chosen seperator')
-            # already_seperator_file = st.sidebar.checkbox('I already have a file with seperators for files')
-            # st.write('<style>div.row-widget.stRadio>div{flex-direction:row;grid-column-gap:30px;}</style>', unsafe_allow_html=True) #Set alignment of radio buttons
-            # choose=st.radio("Select the right seperator",(special_characters))
             
             st.sidebar.subheader('Remember the chosen delimiter')
             already_seperator_file = st.sidebar.checkbox('I already have a file with delimiters for files')
@@ -534,94 +539,9 @@ def app():
             # cols = st.columns(9)
 
             character_choices = set_characters()
-            #st.write(character_choices)
 
-            # with open("mondrian\\colors.json", "r") as jsonfile:
-            #     data = json.load(jsonfile) # Reading the file
-            #     print("Read successful")
-            #     jsonfile.close()
-            # height = st.number_input('Height of generated picture',200)
-            # data['height']= height
-            # width = st.number_input('Width of generated picture', 200)
-            # data['width'] = width
-
-            # display_all_rows_in_file = "Display the color for alle lines in the csv file"
-            # row_output_start = 'Display first ... lines'
-            # row_output_end = 'Display last ... lines'
-            # start_to_stop_rows = 'Display image from line ... to line ...'
-
-            # row_settings = [row_output_start, row_output_end, start_to_stop_rows, display_all_rows_in_file]
-            # row_settings_radio = st.radio('Change the way the rows of the csv file are displayed',row_settings)
-            # #you somehow need to make it so that the first 2 options do not exclude each other
-            # #idea: trigger condition even if only  one of them is picked - but you schould be able to pick 
-            # #two at the sametime!?
-            # if row_settings_radio == start_to_stop_rows:
-            #     #TODO: make it so that both picking or not picking the other value produces a result
-            #     # where both values get a value
-            #     start_row = st.number_input('Display from the ...th row on', 0)
-            # #if line_settings_radio== line_output_at_stop:
-            #     stop_row = st.number_input('Display up unto ...th row',0)
-            #     if start_row> stop_row:
-            #         st.write('The row where the output starts comes later than the one where the output stops. In this case the program will ouput the'
-            #         +'the image with all row. Please change the values accordingly if you do not want that.')
-            #     elif start_row == stop_row:
-            #         st.write('The row where the output starts must not be equal to the one where the output stops. In this case the program will ouput the'
-            #         +'the image with all rows. Please change the values accordingly if you do not want that.')
-            #     else:
-            #         data['row_output_from']=start_row
-            #         data['row_output_until']=stop_row
-            # #just making this dependent on first if is not good -> TODO: fix this!
-            # elif  row_settings_radio ==row_output_start:
-            #     number_start_rows = st.number_input('Display first  ... rows',0)
-            #     data['row_output_start']=number_start_rows
-            # elif  row_settings_radio ==row_output_end:
-            #     number_end_rows = st.number_input('Display last ... rows',0)
-            #     data['row_output_end']=number_end_rows
-            # st.write("If any other options than 'display all lines in file' is chosen but all input numbers "+
-            # "are 0, then the execution will be as if 'display all lines in file' had been chosen")
-            # #do you need to do anything in the else case - > no, because then everything else is 
-            # #displayed anyway
-
-            # display_all_columns_in_file = "Display the color for all columns in the csv file"
-            # column_output_start = 'Display first ... columns'
-            # column_output_end = 'Display last ... column'
-            # start_to_stop_columns = 'Display image from column ... to column ...'
-            
-
-            # column_settings = [column_output_start, column_output_end, start_to_stop_columns, display_all_columns_in_file]
-            # column_settings_radio = st.radio('Change the way the columns of the csv file are displayed', column_settings)
-            # #you somehow need to make it so that the first 2 options do not exclude each other
-            # #idea: trigger condition even if only  one of them is picked - but you schould be able to pick 
-            # #two at the sametime!?
-            # if column_settings_radio == start_to_stop_columns:
-            #     reset_columns_and_rows()
-            #     #TODO: make it so that both picking or not picking the other value produces a result
-            #     # where both values get a value
-            #     start_column = st.number_input('Display from the ...th column on', 0)
-            # #if line_settings_radio== line_output_at_stop:
-            #     stop_column = st.number_input('Display up unto ... lines',0)
-            #     if start_column> stop_column:
-            #         st.write('The column where the output starts comes later than the one where the output stops. In this case the program will ouput the'
-            #         +'the image with all columns. Please change the values accordingly if you do not want that.')
-            #     elif start_column == stop_column:
-            #         st.write('The column where the output starts must not be equal to the one where the output stops. In this case the program will ouput the'
-            #         +'the image with all columns. Please change the values accordingly if you do not want that.')
-            #     else:
-            #         data['column_output_from']=start_column
-            #         data['column_output_until']=stop_column
-            # #just making this dependent on first if is not good -> TODO: fix this!
-            # elif  column_settings_radio ==column_output_start:
-            #     reset_columns_and_rows()
-            #     number_start_columns = st.number_input('Display first  ... columns',0)
-            #     data['column_output_start']=number_start_columns
-            # elif  column_settings_radio ==column_output_end:
-            #     reset_columns_and_rows()
-            #     number_end_columns = st.number_input('Display last ... columns',0)
-            #     data['column_output_end']=number_end_columns
-            # st.write("If any other options than 'display all column in file' is chosen but all input numbers "+
-            # "are 0, then the execution will be as if 'display all columns in file' had been chosen")
             set_height_and_width()
-            #set_row_settings()
+            set_row_settings()
             set_column_settings()
             #right now pretty much all preset values are 0 -> these values mean that nothing needs to be
             #changed because once you activated the visualization we  are certain you want to see an image            #idea: once something has been chosen, automatically write it into the config file
@@ -631,11 +551,6 @@ def app():
             st.write("Please note that depending on the used dialect, there may not be as many lines in the file as are given above so we will choose an approximate amount of the total lines")
         
             set_colors()
-
-            # with open("mondrian\\colors.json", "w") as jsonfile:
-            #     myJSON = json.dump(data, jsonfile) # Writing to the file
-            #     #print("Write successful")
-            #     jsonfile.close()
 
             image_same= st.checkbox('Do not show results with one color/one recognized data type', True)
             #st.write(image_same)

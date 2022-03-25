@@ -23,23 +23,19 @@ from partition import find_external_lines, partition_contour, find_virtual_lines
 import clevercsv
 
 import os
+
+@st.cache(ttl= 24*3600, max_entries= 20) 
 def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False, **formatparams):
-    #print("starting function")
     img = []
     last_nonempty = 0
-    #print(color)
-    #line=""
     # this checks whether file is empty or not
     #if the file is empty, we want to just give out a white rectangle
     if os.stat(path).st_size==0:
         st.write("You entered an empty file.")
         img= [[(255,255,255)]]
         return img
-    #st.write(str(formatparams))
     with open(path, 'r', encoding="UTF-8", errors="ignore") as csvfile:
-        #print('start reading')
         tablereader = csv.reader(csvfile, dialect,**formatparams)
-        #st.write(tablereader)
         max_size = 0
 
         #the following part of the code ensures that even csv file swith huge fields can be read
@@ -58,38 +54,11 @@ def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False,
                 #st.write(maxInt)
                 maxInt = int(maxInt/10)
                 
-            
-        # for idx, line in enumerate(tablereader):
-        #     #loop for idenifying last nonempty line + for parsing the colors of each line that rerader reads
-        #     if line != [''] * len(line):
-        #         last_nonempty = idx
+        img, last_nonempty, max_size = parse_file(tablereader, cell_length,color)
 
-        #     #TODO: maybe move the programm that on demand only gives out certain amount of rows/columns
-        #     # here so that we do not waste any tim parsing them!?
-        #     #print(line)
-        #     st.write('parsing starts')
-        #     result = [parse_cell(val=val, color=color) for val in line]
-        #     #st.write(result)
-        #     print('result: '+ str(result))
-
-        #         #cell_length creates image where columns are sized according to length of their content
-        #     if cell_length:
-        #         result = [r for idx, r in enumerate(result) for _ in range(len(line[idx]))]
-
-        #     if len(result) > max_size:
-        #         max_size = len(result)
-
-        #     img.append(result)
-        #     #loop ends
-
-        img, last_nonempty = parse_file(tablereader, cell_length,color)
     img = img[:last_nonempty + 1][:]
 
-    #print(max_size)
-    #st.write(img)
-
     new_img = []
-    #TODO: Apply multiplication with 255 to files with uneve length as well
 
     #basically, i want to mark the parts with a rim that have lesser length than others by adding white
     # space in the parts that are left overcompared to other lines  
@@ -98,46 +67,6 @@ def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False,
         data = json.load(jsonfile) # Reading the file
         #print("Read successful")
         jsonfile.close()
-
-    # pandas_img = pd.DataFrame(img)
-    # #print(pandas_img)
-    # print(len(pandas_img.columns))
-
-    # if data['column_output_start'] != 0 :
-    #     pandas_img = pandas_img[:, data['column_output_start']-1: ]
-    # if data['column_output_end'] != 0| (data['column_output_from']==0 & data['column_output_until']!=0) :
-    #     #should this not result in 
-    #     pandas_img = pandas_img[:, :data['column_output_end']-1]
-
-    # if data['column_output_from']!=0 & data['column_output_until']!=0:
-    #         #in this part we are adapting the given row numbers to row numbers of the file according to dialect
-    #         if data['column_output_from']> len(pandas_img.columns):
-    #             st.write("The file as read by the given dialect has fewer rows than the row number given as the output start. We will try"
-    #             +'to diplay an approximate selection from the file')
-
-    #             difference = data['column_output_from']/data['column_output_until']
-    #             adapted_start_row = math.ceil(difference * len(pandas_img.columns))
-    #             # data['column_output_from'] = adapted_start_row
-    #             # data['column_output_until'] = len(pandas_img.columns)-1
-    #             pandas_img= pandas_img.loc[:,adapted_start_row: len(pandas_img.columns)-1]
-    #         elif data['column_output_until']> len(img):
-    #             st.write("The file as read by the given dialect has fewer rows than the row number given as the output end. We will try"
-    #             +'to diplay an approximate selection from the file')
-    #             difference = data['column_output_until'] -(len(pandas_img.columns)-1)
-    #             pandas_img= pandas_img.loc[:,math.max(0, data['column_output_from'])-difference: len(pandas_img.columns)-1]
-    #             # data['column_output_from'] = math.max(0, data['column_output_from']-difference )
-    #             # data['column_output_until'] = len(pandas_img.columns)-1
-                
-    #         if 0 < data['column_output_from']:
-    #             pandas_img= pandas_img.loc[:,data['column_output_from']-1 ]          
-
-    #         if len(pandas_img.columns)> data['column_output_until']:
-    #             pandas_img = pandas_img.loc[:, :data['column_output_until']-1]
-    
-    # if img !=pandas_img.to_numpy():
-    #     img = pandas_img.to_numpy()
-    #breakpoint()
-    #pdb.set_trace()
 
     line_number = 0
     for idx, line in enumerate(img):
@@ -241,10 +170,14 @@ def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False,
             #     val_num = val_num+1                    
             #     continue
 
-
+            #I am enlarging each other color by 4 when there are black bars, so that the black bars
+            #will not get in the way
             val = [255* val[0], 255* val[1], 255* val[2]]
             new_line.append(val)
             if str(data['separator_bars'])=='True':
+                # new_line.append(val)
+                # new_line.append(val)
+                # new_line.append(val)
                 new_line.append([0,0,0])
             #print(val)
             # if val == len(line)-1:
@@ -256,18 +189,24 @@ def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False,
         line += [[255, 255, 255]] * (max_size - len(line))
         #st.write(line)
         new_img.append(line)
-        line_number= line_number + 1
+        # line_number= line_number + 1
         if str(data['separator_rows'])=='True':
+            # new_img.append(line)
+            # line_number= line_number + 1
+            # new_img.append(line)
+            # line_number= line_number + 1
+            # new_img.append(line)
+            # line_number= line_number + 1
             line = [[0,0,0]]*max_size
             new_img.append(line)
-            line_number= line_number + 1
+            # line_number= line_number + 1
 
     with open("colors.json", "w") as jsonfile:
         myJSON = json.dump(data, jsonfile) # Writing to the file
         #print("Write successful")
         jsonfile.close()
 
-    st.write(new_img)
+    #st.write(new_img)
     img= new_img
 
     #assert len(img)==2
@@ -280,18 +219,36 @@ def parse_file(csv_reader, cell_length, color):
     max_size = 0
     last_nonempty=0
 
+    with open("C:\\Users\\Ella\\Ella-Kopie\\Studium\\Semester9\\Job\\Mondrian extension for CSV Visualization\\mondrian\\colors.json", "r") as jsonfile:
+        data = json.load(jsonfile) # Reading the file
+        #print("Read successful")
+        jsonfile.close()
+
     for idx, line in enumerate(csv_reader):
     #loop for idenifying last nonempty line + for parsing the colors of each line that rerader reads
+    
+        #st.write(idx)
+        # i am incrasing the idx because the numbering of the lines starts at in the file but 
+        # the idx starts at 0
+
         if line != [''] * len(line):
             last_nonempty = idx
 
+        if data['row_output_from'] !=0:
+            if idx+1 < data['row_output_from']:
+                continue
+        
+        if data['row_output_until'] !=0:
+            if idx+1 > data['row_output_until']:
+                break
+                	
         #TODO: maybe move the programm that on demand only gives out certain amount of rows/columns
         # here so that we do not waste any tim parsing them!?
         #print(line)
-        st.write('parsing starts')
+        #st.write('parsing starts')
         result = [parse_cell(val=val, color=color) for val in line]
         #st.write(result)
-        print('result: '+ str(result))
+        #print('result: '+ str(result))
 
         #cell_length creates image where columns are sized according to length of their content
         if cell_length:
@@ -303,12 +260,14 @@ def parse_file(csv_reader, cell_length, color):
         img.append(result)
         #loop ends
 
-    return img,last_nonempty
+    return img,last_nonempty, max_size
 
 #I have separated this from the visualization function to avoid accidentally messing up the indentation
 
+#this function finds out how lines are separated
 
 #img_same regulates whether pictures with one color are sshown in the output or not
+@st.cache(ttl= 24*3600, max_entries= 20) 
 def manipulate_created_image(img_file, image_same=True):
     #check if the colors in the picture are all the same
     #st.write("image_same: "+str(image_same))
@@ -324,20 +283,17 @@ def manipulate_created_image(img_file, image_same=True):
     img_colors_all_same = False
     if image_same:
         img_colors_all_same = check_if_image_same(img_file)
-        # img_colors_all_same = True
-        # #first_list = img_file[0]
-        # first_element = img_file[0][0]
-        # for list in img_file:
-        #     #first_element = list[0]
-        #     for element in list:
-        #         if first_element != element:
-        #             img_colors_all_same = False  
-        #     # if list != first_list:
-        #     #     img_colors_all_same = False
 
+    length_set={3}
+    # for tuple in img_file:
+    #     length_set.add(len(tuple))
+    # st.write("length_set: "+str(length_set))
+    # if len(str(length_set))>2:
+    #     st.write(length_set)
+    #st.write(img_file)
     img = np.array(img_file,dtype=np.int8)
     img_file = Image.fromarray(img, 'RGB')
-    img_file = img_file.resize((data['height'], data['width']), resample=Image.NEAREST)
+    img_file = img_file.resize((data['width'], data['height']), resample=Image.BOX)
     enhancer = ImageEnhance.Brightness(img_file)
     factor = 0.97
     img_file = enhancer.enhance(factor)
@@ -346,13 +302,6 @@ def manipulate_created_image(img_file, image_same=True):
 
 def check_if_image_same(img_file):
     img_colors_all_same = True
-    #first_list = img_file[0]
-    #st.write(len(img_file))
-    #st.write(img_file)
-    # if img_file[0]=="":#& len(img_file)==1:
-    # #     return img_colors_all_same
-    # if os.stat(img_file).st_size == 0:
-    #     return img_colors_all_same
     if len(img_file)==0:
         return img_colors_all_same
     first_element = img_file[0][0]
@@ -362,8 +311,6 @@ def check_if_image_same(img_file):
             if first_element != element:
                 img_colors_all_same = False
                 return img_colors_all_same
-    # if list != first_list:
-    #     img_colors_all_same = False
     return img_colors_all_same
 
 
@@ -378,27 +325,6 @@ def create_image(table_file_path, separator=None, quotechar=None, escapechar=Non
 
     return img_file
 
-def create_image_clevercsv(table_file_path, dialect= 'excel', color=False, cell_length=False, **formatparams):
-    dialect = dialect_detection_clevercsv(table_file_path)
-    img1 = table_as_image_better(table_file_path, dialect, color, cell_length, **formatparams)
-    img = np.array(img1,dtype= np.int8)
-    img_file = Image.fromarray(img, 'RGB')
-    img_file = img_file.resize((200, 200), resample=Image.NEAREST)
-    enhancer = ImageEnhance.Brightness(img_file)
-    factor = 0.97
-    img_file = enhancer.enhance(factor)
 
-    return img_file
 
-def dialect_detection_clevercsv(table_file_path):
-    dialect = clevercsv.detect_dialect(table_file_path)
 
-    table_file_path = table_file_path.rsplit('.')[0]
-    try:
-        #csv.register_dialect("dialect_"+  table_file_path.rsplit('.')[0], delimiter = dialect.delimiter,quotechar=dialect.quotechar, escapechar = dialect.escapechar)
-        csv.register_dialect("dialect_"+  table_file_path.rsplit('\\')[len(table_file_path.rsplit('\\'))-1], delimiter = dialect.delimiter,quotechar=dialect.quotechar, escapechar = dialect.escapechar)
-    except TypeError:
-        csv.register_dialect("dialect_"+ table_file_path.rsplit('\\')[len(table_file_path.rsplit('\\'))-1], delimiter = dialect.delimiter,quotechar='"', escapechar = dialect.escapechar)        
-    
-    print("dialect_"+ table_file_path.rsplit('\\')[len(table_file_path.rsplit('\\'))-1])
-    return "dialect_"+ table_file_path.rsplit('\\')[len(table_file_path.rsplit('\\'))-1]

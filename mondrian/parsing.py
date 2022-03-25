@@ -20,6 +20,7 @@ class customDateParserInfo(dateutil.parser.parserinfo):
 #3. differentiate_all_titles: strings where every word starts with an uppercase letter
 # to be differently coloured by the algorithm
 
+@st.cache(ttl= 24*3600, max_entries= 20) 
 def parse_cell(val, color=False):
 
     with open("C:\\Users\\Ella\\Ella-Kopie\\Studium\\Semester9\\Job\\Mondrian extension for CSV Visualization\\mondrian\\colors.json", "r") as jsonfile:
@@ -27,7 +28,7 @@ def parse_cell(val, color=False):
         #print("Read successful")
         jsonfile.close()
 
-    st.write('val: '+ str(val))
+    #st.write('val: '+ str(val))
     
     #colors that field white if it is a space or if there is nothing in the value that can be split
     #into it parts which means there is nothing in the value and the value is not a space(this is why 
