@@ -24,8 +24,14 @@ import clevercsv
 
 import os
 
-#@st.cache(ttl= 24*3600, max_entries= 20) 
-def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False, **formatparams):
+with open("C:\\Users\\Ella\\Ella-Kopie\\Studium\\Semester9\\Job\\Mondrian extension for CSV Visualization\\mondrian\\colors.json", "r") as jsonfile:
+        data = json.load(jsonfile) # Reading the file
+        #print("Read successful")
+        jsonfile.close()
+
+@st.cache(ttl= 24*3600, max_entries= 20) 
+def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False, config_file_data=data,**formatparams ):
+    data = config_file_data
     img = []
     last_nonempty = 0
     # this checks whether file is empty or not
@@ -123,67 +129,12 @@ def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False,
         new_line=[]
         # val_num=0
         for val in line:
-            # #print(val)
-            # if data['column_output_start'] != 0 :
-            #     if val_num> data['column_output_start']:
-            #         val_num = val_num+1
-            #         max_size = max_size - data['column_output_start']                 
-            #         continue
-            # if data['column_output_end'] != 0| (data['column_output_from']==0 & data['column_output_until']!=0) :
-            #     if len(line)-val_num <= data['column_output_end']:
-            #         val_num = val_num+1    
-            #         max_size = data['column_output_end']      
-            #         continue
 
-            # if data['column_output_from']!=0 & data['column_output_until']!=0:
-            #     #in this part we are adapting the given row numbers to row numbers of the file according to dialect
-            #     if data['column_output_from']> len(line):
-            #         st.write("The file as read by the given dialect has fewer rows than the row number given as the output start. We will try"
-            #         +'to diplay an approximate selection from the file')
-
-            #         st.write("column_output_from: " + data['column_output_from'])
-            #         st.write("column_output_until: " + data['column_output_untiil'])
-
-            #         difference = data['column_output_from']/data['column_output_until']
-            #         adapted_start_row = math.ceil(difference * len(line))
-            #         st.write("difference: "+ difference + " adapted_start_row: "+adapted_start_row)
-            #         data['column_output_from'] = adapted_start_row
-            #         data['column_output_until'] = len(line)-1
-            #         st.write("column_output_from: " + data['column_output_from'])
-            #         st.write("column_output_until: " + data['column_output_untiil'])
-            #         val_num = val_num+1                    
-            #     elif data['column_output_until']> len(img):
-            #         st.write("The file as read by the given dialect has fewer rows than the row number given as the output end. We will try"
-            #         +'to diplay an approximate selection from the file')
-            #         difference = data['column_output_until'] -(len(img)-1)
-            #         data['column_output_from'] = math.max(0, data['column_output_from']-difference )
-            #         data['column_output_until'] = len(img)-1
-            #         val_num = val_num+1   
-            #         max_size = ['column_output_until']- ['column_output_from']
-                                 
-                    
-            # if val_num< data['column_output_from']:
-            #     val_num = val_num+1                    
-            #     continue
-
-            # if val_num> data['column_output_until']:
-            #     val_num = val_num+1                    
-            #     continue
-
-            #I am enlarging each other color by 4 when there are black bars, so that the black bars
-            #will not get in the way
             val = [255* val[0], 255* val[1], 255* val[2]]
             new_line.append(val)
             if str(data['separator_bars'])=='True':
-                # new_line.append(val)
-                # new_line.append(val)
-                # new_line.append(val)
                 new_line.append([0,0,0])
-            #print(val)
-            # if val == len(line)-1:
-            #     val_num = 0
-            # else:
-            #     val = val+1
+
         line=new_line
         #print(max_size-len(line))
         line += [[255, 255, 255]] * (max_size - len(line))
@@ -191,12 +142,7 @@ def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False,
         new_img.append(line)
         # line_number= line_number + 1
         if str(data['separator_rows'])=='True':
-            # new_img.append(line)
-            # line_number= line_number + 1
-            # new_img.append(line)
-            # line_number= line_number + 1
-            # new_img.append(line)
-            # line_number= line_number + 1
+
             line = [[0,0,0]]*max_size
             new_img.append(line)
             # line_number= line_number + 1
@@ -280,6 +226,7 @@ def manipulate_created_image(img_file, image_same=True, resampling_method = "Nea
     if image_same:
         img_colors_all_same = check_if_image_same(img_file)
 
+    #st.write(str(img_colors_all_same))
     img = np.array(img_file,dtype=np.int8)
     img_file = Image.fromarray(img, 'RGB')
     #img_file = img_file.resize((data['width'], data['height']), resample=Image.BOX)
@@ -320,29 +267,33 @@ def use_resampling_algorithm(img_file, resampling_method):
     return img_file
 
 def check_if_image_same(img_file):
+    #st.write("start_image_checking")
     img_colors_all_same = True
+    #st.write(len(img_file))
     if len(img_file)==0:
         return img_colors_all_same
     first_element = img_file[0][0]
+    #st.write(first_element)
     for list in img_file:
         #first_element = list[0]
         for element in list:
             if first_element != element:
+                #st.write(element)
                 img_colors_all_same = False
                 return img_colors_all_same
     return img_colors_all_same
 
 
-def create_image(table_file_path, separator=None, quotechar=None, escapechar=None , color=False, cell_length=False, **formatparams):
-    img1 = table_as_image_better(table_file_path, separator, quotechar, escapechar, color, cell_length, **formatparams)
-    img = np.array(img1,dtype= np.int8)
-    img_file = Image.fromarray(img, 'RGB')
-    img_file = img_file.resize((200, 200), resample=Image.HAMMING)
-    enhancer = ImageEnhance.Brightness(img_file)
-    factor = 0.97
-    img_file = enhancer.enhance(factor)
+# def create_image(table_file_path, separator=None, quotechar=None, escapechar=None , color=False, cell_length=False, **formatparams):
+#     img1 = table_as_image_better(table_file_path, separator, quotechar, escapechar, color, cell_length, **formatparams)
+#     img = np.array(img1,dtype= np.int8)
+#     img_file = Image.fromarray(img, 'RGB')
+#     img_file = img_file.resize((200, 200), resample=Image.HAMMING)
+#     enhancer = ImageEnhance.Brightness(img_file)
+#     factor = 0.97
+#     img_file = enhancer.enhance(factor)
 
-    return img_file
+#     return img_file
 
 
 

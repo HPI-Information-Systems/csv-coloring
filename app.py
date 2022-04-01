@@ -3,6 +3,7 @@ import streamlit as st
 import json
 import pandas as pd
 import sys
+import math
 
 sys.path.append('C:\\Users\\Ella\\Ella-Kopie\\Studium\\Semester9\\Job\\Mondrian extension for CSV Visualization\\mondrian')
 from mondrian.visualization import manipulate_created_image, table_as_image_better,manipulate_created_image
@@ -14,7 +15,10 @@ import easygui
 #i have added the empty string  at the start
 special_characters = ['!', '"', '$', '#', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~','','\\r\\n']
 
-@st.cache(ttl= 24*3600, max_entries= 20) 
+with open("mondrian\\colors.json", "r") as jsonfile:
+        data = json.load(jsonfile) # Reading the file
+        jsonfile.close()
+#@st.cache(ttl= 24*3600, max_entries= 20) 
 def open_file():
     try:
         file_path = easygui.fileopenbox('Upload your CSV File')
@@ -27,7 +31,7 @@ def open_file():
 
 #rows are probably the rows that are supposed to be loaded
 #sep is the separator
-@st.cache(ttl= 24*3600, max_entries= 20) 
+#@st.cache(ttl= 24*3600, max_entries= 20) 
 def load_data(uploaded_file, nrows, sep, quotechar = '"', escapechar=None):                                          #  load data from csv file
 #def load_data(uploaded_file, nrows, sep):                                          #  load data from csv file#
     #data = pd.read_csv(uploaded_file, sep=sep, nrows=nrows, header=None, quotechar =quotechar, escapechar=escapechar)           #  read csv file
@@ -39,19 +43,24 @@ def load_data(uploaded_file, nrows, sep, quotechar = '"', escapechar=None):     
 def go_over_characters(file_path, character_choices, image_same, resampling_indices):
     #this part is for generating the numbers of columns depending on image width
     #i am assuming there are 1000 pixels for columns + 100 pixeks between images
+    #actually I am replacing the 100 pixels with the width of the data because it makes the results look better
+
 
     with open("mondrian\\colors.json", "r") as jsonfile:
                 data = json.load(jsonfile) # Reading the file
-                #print("Read successful")
+                 #print("Read successful")
                 jsonfile.close()
 
-    max_pics_on_page = 1000/data["width"]
-    space_pics_with_gaps = max_pics_on_page*data['height'] + (max_pics_on_page-1)*data['height']
+    #st.write(data["width"])
+    max_pics_on_page = math.floor(1000/data["width"])
+    space_pics_with_gaps = max_pics_on_page*data['width'] + (max_pics_on_page-1)*data["width"]
 
-    while space_pics_with_gaps>1000 & max_pics_on_page >1:
+    while (space_pics_with_gaps>1000) & (max_pics_on_page >1):
         max_pics_on_page = max_pics_on_page-1
-        space_pics_with_gaps = max_pics_on_page*data['height'] + (max_pics_on_page-1)*data['height']        
+        space_pics_with_gaps = max_pics_on_page*data['width'] + (max_pics_on_page-1)*data["width"]
+        #st.write(space_pics_with_gaps)        
 
+    #st.write(max_pics_on_page)
     #st.write("Go over characters")
     cols = st.columns(3)
     num = 0
@@ -76,38 +85,47 @@ def go_over_characters(file_path, character_choices, image_same, resampling_indi
                 if num % 3 == 0:
                     if special_characters[g] == '#':
                         #cols[0].subheader("#ㅤ")
-                        cols[num % 3].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: #')
+                        cols[num % max_pics_on_page].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: #')                        
+                        #cols[num % 3].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: #')
+                        num = num+1              
+
                     else:
                         for resampling_method in resampling_indices:
-                            image_all_same_color, image = manipulate_created_image(table_as_image_better(file_path, delimiter=f'{special_characters[separators[i]]}', quotechar=f'{special_characters[quotechars[j]]}', escapechar=f'{special_characters[g]}'), image_same, resampling_method)
+                            image_all_same_color, image = manipulate_created_image(table_as_image_better(file_path, config_file_data=data, delimiter=f'{special_characters[separators[i]]}', quotechar=f'{special_characters[quotechars[j]]}', escapechar=f'{special_characters[g]}'), image_same, resampling_method)
                         #st.write(image_all_same_color)
                             if image_all_same_color:
                                 continue
-                            cols[num % 3].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: '+ f'{special_characters[escapechars[g]]}' + ', resampling_method: '+ f'{resampling_method}' )
-                            cols[num % 3].image(image)
+                            cols[num % max_pics_on_page].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: #')                        
+                            #cols[num % 3].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: '+ f'{special_characters[escapechars[g]]}' + ', resampling_method: '+ f'{resampling_method}' )
+                            cols[num % max_pics_on_page].image(image)    
+                            #cols[num % 3].image(image)
                             num = num+1              
                 elif num % 3 == 1:
                     for resampling_method in resampling_indices:
-                        image_all_same_color, image = manipulate_created_image(table_as_image_better(file_path, delimiter=f'{special_characters[separators[i]]}', quotechar=f'{special_characters[quotechars[j]]}', escapechar=f'{special_characters[g]}'), image_same,resampling_method)
+                        image_all_same_color, image = manipulate_created_image(table_as_image_better(file_path,config_file_data=data, delimiter=f'{special_characters[separators[i]]}', quotechar=f'{special_characters[quotechars[j]]}', escapechar=f'{special_characters[g]}'), image_same,resampling_method)
                         if image_all_same_color:
                             continue
-                        cols[num % 3].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: '+ f'{special_characters[escapechars[g]]}' + ', resampling_method: '+ f'{resampling_method}' )
+                        cols[num % max_pics_on_page].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: #')                        
+                        #cols[num % 3].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: '+ f'{special_characters[escapechars[g]]}' + ', resampling_method: '+ f'{resampling_method}' )
+                        cols[num % max_pics_on_page].image(image)    
                         cols[num % 3].image(image)    
                         num=num+1   
                 elif num % 3 == 2:
                     for resampling_method in resampling_indices:
-                        image_all_same_color, image = manipulate_created_image(table_as_image_better(file_path, delimiter=f'{special_characters[separators[i]]}', quotechar=f'{special_characters[quotechars[j]]}', escapechar=f'{special_characters[g]}'), image_same, resampling_method)
+                        image_all_same_color, image = manipulate_created_image(table_as_image_better(file_path,config_file_data=data, delimiter=f'{special_characters[separators[i]]}', quotechar=f'{special_characters[quotechars[j]]}', escapechar=f'{special_characters[g]}'), image_same, resampling_method)
                         if image_all_same_color:
                             continue
-                        cols[num % 3].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: '+ f'{special_characters[escapechars[g]]}' + ', resampling_method: '+ f'{resampling_method}' )
-                        cols[num % 3].image(image)    
+                        cols[num % max_pics_on_page].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: #')                        
+                        #cols[num % 3].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: '+ f'{special_characters[escapechars[g]]}' + ', resampling_method: '+ f'{resampling_method}' )
+                        cols[num % max_pics_on_page].image(image)    
+                        #cols[num % 3].image(image)    
                         num=num+1
                 #st.write(num)
 
 def reset_columns_and_rows():
     with open("mondrian\\colors.json", "r") as jsonfile:
         data = json.load(jsonfile) # Reading the file
-        #print("Read successful")
+         #print("Read successful")
         jsonfile.close()
     
     data['row_output_from']=0
@@ -121,7 +139,7 @@ def reset_columns_and_rows():
     data['column_output_end']=0
 
     with open("mondrian\\colors.json", "w") as jsonfile:
-        myJSON = json.dump(data, jsonfile) # Writing to the file
+        json.dump(data, jsonfile) # Writing to the file
         #print("Write successful")
         jsonfile.close()
            
@@ -209,17 +227,17 @@ def set_characters():
                     if extraspecial_chars[i]=='"': 
                         quotechar_choice=cols[i%9].checkbox('"',True, key=11)
                     elif extraspecial_chars[i]=='': 
-                        quotechar_choice=cols[i%9].checkbox('"',True, key=11)
+                        quotechar_choice=cols[i%9].checkbox('"',True, key=18)
                     else:
-                        quotechar_choice=cols[i%9].checkbox(extraspecial_chars[i],True, key=11)
+                        quotechar_choice=cols[i%9].checkbox(extraspecial_chars[i],True, key=19)
                 elif extraspecial_chars[i]=='': 
                     pass
                 elif extraspecial_chars[i]=='"': 
-                    quotechar_choice=cols[i%9].checkbox('"',True, key=11)
+                    quotechar_choice=cols[i%9].checkbox('"',True, key=15)
                 elif extraspecial_chars[i]=='':
-                    quotechar_choice=cols[i%9].checkbox('',True, key=11)
+                    quotechar_choice=cols[i%9].checkbox('',True, key=16)
                 else: 
-                    quotechar_choice=cols[i%9].checkbox(extraspecial_chars[i], key=11)     
+                    quotechar_choice=cols[i%9].checkbox(extraspecial_chars[i], key=17)     
                 choose_quotechars.append(quotechar_choice)
                 if quotechar_choice:
                     quotechar_indices.append(i)
@@ -381,6 +399,9 @@ def set_row_settings():
             
             st.write("If any other options than 'display all lines in file' is chosen but all input numbers "
             +"are 0, then the execution will be as if 'display all lines in file' had been chosen")
+            st.write("Please note that depending on the used dialect, there may not be as many lines in the file as are given above so we will only display the lines within your given space that actually exist in the file")
+
+
             with open("mondrian\\colors.json", "w") as jsonfile:
                 myJSON = json.dump(data, jsonfile) # Writing to the file
                 #print("Write successful")
@@ -404,14 +425,20 @@ def set_resampling_algorithm():
     resampling_indices=[]
     for i in range(0, len(resampling_settings)):
             if choose_all:
-                    resampling_choice=cols[i%6].checkbox(resampling_settings[i],True, key=10)
+                resampling_choice=cols[i%6].checkbox(resampling_settings[i],True, key=10)
             else: 
+                if resampling_settings[i] == "Nearest-neighbor  Interpolation":
+                    resampling_choice=cols[i%6].checkbox(resampling_settings[i], True, key=10)
+                else:
                     resampling_choice=cols[i%6].checkbox(resampling_settings[i], key=10)
             if resampling_choice:
                 resampling_indices.append(resampling_settings[i])
         
             #return character_choices
 
+    if len(resampling_indices)<1:
+        st.write("Please choose at least one resampling algorithm or there wil be no picture upon"
+        +"pressing the button")
     #st.write("Choose the Image scaling method you want to use")
     #resampling_settings = ["Nearest-neighbor  Interpolation", "Bilinear algorithm", "Bicubic algorithm", "Box Sampling","Lanczos Resampling", "Hamming algorithm"]
     #resampling_settings_radio = st.radio('Change the way the rows of the csv file are displayed',resampling_settings)
@@ -463,6 +490,9 @@ def set_column_settings():
                 data['column_output_end']=number_end_columns
             st.write("If any other options than 'display all column in file' is chosen but all input numbers "+
             "are 0, then the execution will be as if 'display all columns in file' had been chosen")
+            
+            st.write("Please note that depending on the used dialect, there may not be as many lines in the file as are given above so we will only display the lines within your given space that actually exist in the file")
+
             with open("mondrian\\colors.json", "w") as jsonfile:
                 myJSON = json.dump(data, jsonfile) # Writing to the file
                 #print("Write successful")
@@ -597,8 +627,6 @@ def app():
             #this also means that you need default settings for them 
             #why do you add different data blocks to json files, bc right now my file has everything
             #in the same data
-            st.write("Please note that depending on the used dialect, there may not be as many lines in the file as are given above so we will choose an approximate amount of the total lines")
-        
             set_colors()
 
             image_same= st.checkbox('Do not show results with one color/one recognized data type', True)
