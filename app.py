@@ -1,18 +1,13 @@
 #from types import CellType
-from numpy import string_
 import streamlit as st
 import json
 import pandas as pd
 import sys
 
-from streamlit.elements.utils import check_callback_rules
 sys.path.append('C:\\Users\\Ella\\Ella-Kopie\\Studium\\Semester9\\Job\\Mondrian extension for CSV Visualization\\mondrian')
-from mondrian.visualization import manipulate_created_image, create_image, table_as_image_better,manipulate_created_image, count_lines_for_dialect
+from mondrian.visualization import manipulate_created_image, table_as_image_better,manipulate_created_image
 import os
 import easygui
-import csv
-from PIL import ImageColor
-import colour
 
 #TODO: Überlege dir, ob du die Farben intern im Hex-oder im RGB-Format speichern möchtest
 
@@ -39,9 +34,24 @@ def load_data(uploaded_file, nrows, sep, quotechar = '"', escapechar=None):     
     data = pd.read_csv(uploaded_file, sep=sep, nrows=nrows, quotechar =quotechar, escapechar=escapechar)           #  read csv file
     return data
 
-#collect chosen dialect signs in data file + use them for the loops here
-@st.cache(ttl= 24*3600, max_entries= 20) 
-def go_over_characters(file_path, character_choices, image_same):
+#suppressing all warnings might have effects later on
+#@st.cache(ttl= 24*3600, max_entries= 20,suppress_st_warning=True) 
+def go_over_characters(file_path, character_choices, image_same, resampling_indices):
+    #this part is for generating the numbers of columns depending on image width
+    #i am assuming there are 1000 pixels for columns + 100 pixeks between images
+
+    with open("mondrian\\colors.json", "r") as jsonfile:
+                data = json.load(jsonfile) # Reading the file
+                #print("Read successful")
+                jsonfile.close()
+
+    max_pics_on_page = 1000/data["width"]
+    space_pics_with_gaps = max_pics_on_page*data['height'] + (max_pics_on_page-1)*data['height']
+
+    while space_pics_with_gaps>1000 & max_pics_on_page >1:
+        max_pics_on_page = max_pics_on_page-1
+        space_pics_with_gaps = max_pics_on_page*data['height'] + (max_pics_on_page-1)*data['height']        
+
     #st.write("Go over characters")
     cols = st.columns(3)
     num = 0
@@ -66,27 +76,32 @@ def go_over_characters(file_path, character_choices, image_same):
                 if num % 3 == 0:
                     if special_characters[g] == '#':
                         #cols[0].subheader("#ㅤ")
-                        cols[0].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: #')
+                        cols[num % 3].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: #')
                     else:
-                        image_all_same_color, image = manipulate_created_image(table_as_image_better(file_path, delimiter=f'{special_characters[separators[i]]}', quotechar=f'{special_characters[quotechars[j]]}', escapechar=f'{special_characters[g]}'), image_same)
+                        for resampling_method in resampling_indices:
+                            image_all_same_color, image = manipulate_created_image(table_as_image_better(file_path, delimiter=f'{special_characters[separators[i]]}', quotechar=f'{special_characters[quotechars[j]]}', escapechar=f'{special_characters[g]}'), image_same, resampling_method)
                         #st.write(image_all_same_color)
+                            if image_all_same_color:
+                                continue
+                            cols[num % 3].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: '+ f'{special_characters[escapechars[g]]}' + ', resampling_method: '+ f'{resampling_method}' )
+                            cols[num % 3].image(image)
+                            num = num+1              
+                elif num % 3 == 1:
+                    for resampling_method in resampling_indices:
+                        image_all_same_color, image = manipulate_created_image(table_as_image_better(file_path, delimiter=f'{special_characters[separators[i]]}', quotechar=f'{special_characters[quotechars[j]]}', escapechar=f'{special_characters[g]}'), image_same,resampling_method)
                         if image_all_same_color:
                             continue
-                        cols[0].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: '+ f'{special_characters[escapechars[g]]}')
-                        cols[0].image(image)                
-                elif num % 3 == 1:
-                    image_all_same_color, image = manipulate_created_image(table_as_image_better(file_path, delimiter=f'{special_characters[separators[i]]}', quotechar=f'{special_characters[quotechars[j]]}', escapechar=f'{special_characters[g]}'), image_same)
-                    if image_all_same_color:
-                        continue
-                    cols[1].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: '+ f'{special_characters[escapechars[g]]}')
-                    cols[1].image(image)       
+                        cols[num % 3].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: '+ f'{special_characters[escapechars[g]]}' + ', resampling_method: '+ f'{resampling_method}' )
+                        cols[num % 3].image(image)    
+                        num=num+1   
                 elif num % 3 == 2:
-                    image_all_same_color, image = manipulate_created_image(table_as_image_better(file_path, delimiter=f'{special_characters[separators[i]]}', quotechar=f'{special_characters[quotechars[j]]}', escapechar=f'{special_characters[g]}'), image_same)
-                    if image_all_same_color:
-                        continue
-                    cols[2].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: '+ f'{special_characters[escapechars[g]]}')
-                    cols[2].image(image)    
-                num=num+1
+                    for resampling_method in resampling_indices:
+                        image_all_same_color, image = manipulate_created_image(table_as_image_better(file_path, delimiter=f'{special_characters[separators[i]]}', quotechar=f'{special_characters[quotechars[j]]}', escapechar=f'{special_characters[g]}'), image_same, resampling_method)
+                        if image_all_same_color:
+                            continue
+                        cols[num % 3].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: '+ f'{special_characters[escapechars[g]]}' + ', resampling_method: '+ f'{resampling_method}' )
+                        cols[num % 3].image(image)    
+                        num=num+1
                 #st.write(num)
 
 def reset_columns_and_rows():
@@ -110,7 +125,7 @@ def reset_columns_and_rows():
         #print("Write successful")
         jsonfile.close()
            
-@st.cache(ttl= 24*3600, max_entries= 20) 
+#@st.cache(ttl= 24*3600, max_entries= 20) 
 def highlight_cell(cell_value, int_color, float_color, string_color):
     highlightNone = 'background-color: lightgrey;'                  #  empty cell color
     highlightInt = 'background-color: ' + int_color + ';'           #  integer cell color       
@@ -132,7 +147,7 @@ def highlight_cell(cell_value, int_color, float_color, string_color):
     
     return highlightString
 
-@st.cache(ttl= 24*3600, max_entries= 20) 
+#@st.cache(ttl= 24*3600, max_entries= 20) 
 def check_path(file_path):
     if os.path.isfile(file_path):
         return True
@@ -145,7 +160,8 @@ def append_existing_file(uploaded_sep_file, uploaded_file, sep):
     new_row.to_csv(f'{df}', mode='a', header=False,)
     return df
 
-@st.cache(ttl= 24*3600, max_entries= 20) 
+#suppressing all warnings might have effects later on
+#@st.cache(ttl= 24*3600, max_entries= 20,suppress_st_warning=True) 
 def set_characters():
             st.subheader('Select a delimiter (You must select at least one)')
             cols = st.columns(9)
@@ -234,7 +250,9 @@ def set_characters():
 
             return character_choices
 
-@st.cache(ttl= 24*3600, max_entries= 20) 
+
+
+#@st.cache(ttl= 24*3600, max_entries= 20) 
 def set_colors():
             with open("mondrian\\colors.json", "r") as jsonfile:
                 data = json.load(jsonfile) # Reading the file
@@ -262,7 +280,6 @@ def set_colors():
             check_date = st.checkbox('Show dates in their own color')
             check_separator_bars=st.checkbox('Divide columns with black bars')
             check_separator_rows=st.checkbox('Divide rows with black row')
-
 
             data['STRING_GENERIC']= string_color
             data['INTEGER']= int_color
@@ -369,6 +386,38 @@ def set_row_settings():
                 #print("Write successful")
                 jsonfile.close()
 
+def set_resampling_algorithm():
+    with open("mondrian\\colors.json", "r") as jsonfile:
+                data = json.load(jsonfile) # Reading the file
+                #print("Read successful")
+                jsonfile.close()
+
+    st.write('Select a resampling method. Please note that each chosen method will be used on '
+    +'every dialect option you chose')
+    cols = st.columns(6)
+    resampling_settings = ["Nearest-neighbor  Interpolation", "Bilinear algorithm", "Bicubic algorithm", "Box Sampling","Lanczos Resampling", "Hamming algorithm"]
+
+    choose_all= st.checkbox('Choose all characters', key=14)
+    # am excluding the characters that get rejected by the reader from what is shown,
+    # may have to change code to accomodate them
+
+    resampling_indices=[]
+    for i in range(0, len(resampling_settings)):
+            if choose_all:
+                    resampling_choice=cols[i%6].checkbox(resampling_settings[i],True, key=10)
+            else: 
+                    resampling_choice=cols[i%6].checkbox(resampling_settings[i], key=10)
+            if resampling_choice:
+                resampling_indices.append(resampling_settings[i])
+        
+            #return character_choices
+
+    #st.write("Choose the Image scaling method you want to use")
+    #resampling_settings = ["Nearest-neighbor  Interpolation", "Bilinear algorithm", "Bicubic algorithm", "Box Sampling","Lanczos Resampling", "Hamming algorithm"]
+    #resampling_settings_radio = st.radio('Change the way the rows of the csv file are displayed',resampling_settings)
+
+    return resampling_indices
+
 def set_column_settings():
 
             with open("mondrian\\colors.json", "r") as jsonfile:
@@ -419,20 +468,19 @@ def set_column_settings():
                 #print("Write successful")
                 jsonfile.close()
 
-@st.cache(ttl= 24*3600, max_entries= 20) 
+#@st.cache(ttl= 24*3600, max_entries= 20) 
 def set_height_and_width():
     with open("mondrian\\colors.json", "r") as jsonfile:
         data = json.load(jsonfile) # Reading the file
-        #print("Read successful")
         jsonfile.close()
     height = st.number_input('Height of generated picture',200)
     data['height']= height
     width = st.number_input('Width of generated picture', 200)
     data['width'] = width
     with open("mondrian\\colors.json", "w") as jsonfile:
-        myJSON = json.dump(data, jsonfile) # Writing to the file
-        #print("Write successful")
+        json.dump(data, jsonfile) # Writing to the file
         jsonfile.close()
+    
 
 def reset_config_file():
     #TODO:this file lacks the settings for the displayed lines, you will hav to add them once they work
@@ -533,7 +581,7 @@ def app():
             st.sidebar.subheader('Remember the chosen delimiter')
             already_seperator_file = st.sidebar.checkbox('I already have a file with delimiters for files')
             st.write('<style>div.row-widget.stRadio>div{flex-direction:row;grid-column-gap:30px;}</style>', unsafe_allow_html=True) #Set alignment of radio buttons
-            extraspecial_chars = list(special_characters)
+            #extraspecial_chars = list(special_characters)
 
             # st.subheader('Select a delimiter (You must select at least one)')
             # cols = st.columns(9)
@@ -542,7 +590,8 @@ def app():
 
             set_height_and_width()
             set_row_settings()
-            set_column_settings()
+            #set_column_settings()
+            resampling_indices = set_resampling_algorithm()
             #right now pretty much all preset values are 0 -> these values mean that nothing needs to be
             #changed because once you activated the visualization we  are certain you want to see an image            #idea: once something has been chosen, automatically write it into the config file
             #this also means that you need default settings for them 
@@ -557,7 +606,7 @@ def app():
             button = st.button('Create visualization')
             if button:
                     #st.write('Starting Loop')
-                    go_over_characters(file_path, character_choices,image_same)
+                    go_over_characters(file_path, character_choices,image_same, resampling_indices)
                     #this part is for selecting the quotechar
             else:
                 st.write('You have not pressed the button yet.')

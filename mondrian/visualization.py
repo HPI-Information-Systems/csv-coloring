@@ -24,7 +24,7 @@ import clevercsv
 
 import os
 
-@st.cache(ttl= 24*3600, max_entries= 20) 
+#@st.cache(ttl= 24*3600, max_entries= 20) 
 def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False, **formatparams):
     img = []
     last_nonempty = 0
@@ -267,38 +267,57 @@ def parse_file(csv_reader, cell_length, color):
 #this function finds out how lines are separated
 
 #img_same regulates whether pictures with one color are sshown in the output or not
-@st.cache(ttl= 24*3600, max_entries= 20) 
-def manipulate_created_image(img_file, image_same=True):
+#@st.cache(ttl= 24*3600, max_entries= 20) 
+def manipulate_created_image(img_file, image_same=True, resampling_method = "Nearest-neighbor  Interpolation"):
     #check if the colors in the picture are all the same
     #st.write("image_same: "+str(image_same))
     with open("C:\\Users\\Ella\\Ella-Kopie\\Studium\\Semester9\\Job\\Mondrian extension for CSV Visualization\\mondrian\\colors.json", "r") as jsonfile:
         data = json.load(jsonfile) # Reading the file
         #print("Read successful")
         jsonfile.close()
-    #this loop postulates that if there a color in the image file that is different to the first color,
-    #there are >2 colors in the image -> the image has >1 colors
-    #print(img_file)
 
-    #st.write(img_file)
     img_colors_all_same = False
     if image_same:
         img_colors_all_same = check_if_image_same(img_file)
 
-    length_set={3}
-    # for tuple in img_file:
-    #     length_set.add(len(tuple))
-    # st.write("length_set: "+str(length_set))
-    # if len(str(length_set))>2:
-    #     st.write(length_set)
-    #st.write(img_file)
     img = np.array(img_file,dtype=np.int8)
     img_file = Image.fromarray(img, 'RGB')
-    img_file = img_file.resize((data['width'], data['height']), resample=Image.BOX)
+    #img_file = img_file.resize((data['width'], data['height']), resample=Image.BOX)
+    img_file = use_resampling_algorithm(img_file, resampling_method)
     enhancer = ImageEnhance.Brightness(img_file)
     factor = 0.97
     img_file = enhancer.enhance(factor)
 
     return img_colors_all_same,img_file
+
+def use_resampling_algorithm(img_file, resampling_method):
+    with open("C:\\Users\\Ella\\Ella-Kopie\\Studium\\Semester9\\Job\\Mondrian extension for CSV Visualization\\mondrian\\colors.json", "r") as jsonfile:
+        data = json.load(jsonfile) # Reading the file
+        #print("Read successful")
+        jsonfile.close()
+
+    # st.write("data[height]: "+ str(data['height']))
+    # st.write("data[width]: "+ str(data['width']))
+    if resampling_method=="Bilinear algorithm":
+        img_file = img_file.resize((data['width'], data['height']), resample=Image.BILINEAR)
+
+    elif resampling_method=="Bicubic algorithm":
+        img_file = img_file.resize((data['width'], data['height']), resample=Image.BICUBIC)
+
+    elif resampling_method=="Box Sampling":
+        img_file = img_file.resize((data['width'], data['height']), resample=Image.BOX)
+
+    elif resampling_method=="Lanczos Resampling":
+        img_file = img_file.resize((data['width'], data['height']), resample=Image.LANCZOS)
+
+    elif resampling_method=="Hamming algorithm":
+        img_file = img_file.resize((data['width'], data['height']), resample=Image.HAMMING)
+
+    #We are assuming the Nearest-Neighbor Interpolation is the default
+    else:
+        img_file = img_file.resize((data['width'], data['height']), resample=Image.NEAREST)
+    
+    return img_file
 
 def check_if_image_same(img_file):
     img_colors_all_same = True
@@ -318,7 +337,7 @@ def create_image(table_file_path, separator=None, quotechar=None, escapechar=Non
     img1 = table_as_image_better(table_file_path, separator, quotechar, escapechar, color, cell_length, **formatparams)
     img = np.array(img1,dtype= np.int8)
     img_file = Image.fromarray(img, 'RGB')
-    img_file = img_file.resize((200, 200), resample=Image.NEAREST)
+    img_file = img_file.resize((200, 200), resample=Image.HAMMING)
     enhancer = ImageEnhance.Brightness(img_file)
     factor = 0.97
     img_file = enhancer.enhance(factor)

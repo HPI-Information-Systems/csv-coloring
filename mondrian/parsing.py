@@ -20,7 +20,7 @@ class customDateParserInfo(dateutil.parser.parserinfo):
 #3. differentiate_all_titles: strings where every word starts with an uppercase letter
 # to be differently coloured by the algorithm
 
-@st.cache(ttl= 24*3600, max_entries= 20) 
+#@st.cache(ttl= 24*3600, max_entries= 20) 
 def parse_cell(val, color=False):
 
     with open("C:\\Users\\Ella\\Ella-Kopie\\Studium\\Semester9\\Job\\Mondrian extension for CSV Visualization\\mondrian\\colors.json", "r") as jsonfile:
