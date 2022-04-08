@@ -17,7 +17,9 @@ in your terminal.
 # Using the app
 When trying to figure out the dialect in your csv file, you can try how the data types in the file are distributed in the file according to that dialect. For that first choose "CSV Dialect Detection" and enter the path you want to investigate below. To pick the dialect to test, you can choose a delimiter, a quote character and an escape character. By default, only empty data, string data, integer data and float data are differentiated with colors. We are trying this on the file April_2015_published.csv. Just press the "Create Visualization" button.
 
-This color distribution looks very unlikely for a table where most columns usually have the same data type. But if we use ... and press "Create Visualization" again, then the lines  have the same data types which makes the dialect much morelikely to be correct.
+!(https://github.com/HPI-Information-Systems/csv-coloring/blob/main/images/wrong_coloring.PNG)
+
+This color distribution looks very odd. But if we use ... and press "Create Visualization" again, then the lines  have the same data types which makes the dialect much morelikely to be correct.
 
 If more information is needed, you can also tick a box to also mark dates, times, uppercase strings, lowercase strings, and  titles with their own color, as seen below on the same file.
 
