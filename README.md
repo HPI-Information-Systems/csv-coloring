@@ -19,9 +19,10 @@ When trying to figure out the dialect in your csv file, you can try how the data
 
 This color distribution looks very odd. But if we use ... and press "Create Visualization" again, then the lines  have the same data types which makes the dialect much morelikely to be correct.
 
+![](https://github.com/HPI-Information-Systems/csv-coloring/blob/main/images/correct_weird_coloring.PNG)
+
 If more information is needed, you can also tick a box to also mark dates, times, uppercase strings, lowercase strings, and  titles with their own color, as seen below on the same file.
 
--white spaces in image mean unidentified data type or irregular row length
 
 # Features
 There are also all kinds of other  features
