@@ -1,0 +1,938 @@
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+1,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+1,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+1,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+1,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+1,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+1,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+1,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+1,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+1,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+1,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+1,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+1,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+integer,string,title_string,uppercase_string,lowercase_string,date,float,time
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark","Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,"Mark", "Captain America","STRING","string","2019-12-04",1.44,"13:45:02"
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+1,2,3,4,5,6,7,8
+
+
+
+
+
