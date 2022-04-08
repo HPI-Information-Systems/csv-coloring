@@ -28,6 +28,7 @@ Simply install the app, move to the installation folder and type  `streamlit run
 
 - the program cannot yet identify title strings
 
+
 # Extension ideas
 I have added some more specific extension ideas as TODOs in the code itself. Possible improvements in general are
 
