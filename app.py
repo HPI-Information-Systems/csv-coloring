@@ -61,7 +61,6 @@ def go_over_characters(file_path, character_choices, image_same, resampling_indi
     #generates images depending on the chosen dialect characters    
     for i in range(0, len(separators)):               
         for j in range(0, len(quotechars)): 
-            
             for g in range(0, len(escapechars)):
                 if num % 3 == 0:
                     if special_characters[g] == '#':
@@ -166,6 +165,7 @@ def set_characters():
             delimiter_choice=cols[i%9].checkbox(',',True, key=10)
         elif extraspecial_chars[i]=="\\r\\n":
             delimiter_choice=False
+            pass
         elif extraspecial_chars[i]=='':
             delimiter_choice=False
             pass
@@ -196,8 +196,6 @@ def set_characters():
             pass
         elif extraspecial_chars[i]=='"': 
             quotechar_choice=cols[i%9].checkbox('"',True, key=15)
-        elif extraspecial_chars[i]=='':
-            quotechar_choice=cols[i%9].checkbox('',True, key=16)
         elif extraspecial_chars[i]=="\\r\\n":
             pass
         else: 
