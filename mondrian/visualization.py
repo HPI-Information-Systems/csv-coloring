@@ -47,7 +47,6 @@ def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False,
                 csv.field_size_limit(maxInt)
                 break
             except OverflowError:
-                #TODO: Find out if we are only using this one in case includes taht you have to input a certain number of files at the start of an OverflowError
                 maxInt = int(maxInt/10)
                 
         img, last_nonempty, max_size = parse_file(tablereader, cell_length,color)
@@ -56,14 +55,13 @@ def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False,
 
     new_img = []
 
-    # basically, i want to mark the parts with a rim that have lesser length than others by adding white
-    # space in the parts that are left overcompared to other lines  
+    # basically, i want to mark the lines with a rim that have lesser length than others by adding white
+    # space in the parts that are left over compared to other lines  
 
     with open("C:\\Users\\Ella\\Ella-Kopie\\Studium\\Semester9\\Job\\Mondrian extension for CSV Visualization\\mondrian\\colors.json", "r") as jsonfile:
         data = json.load(jsonfile) # Reading the file
         jsonfile.close()
 
-    line_number = 0
     for idx, line in enumerate(img):
 
         new_line=[]
@@ -71,8 +69,6 @@ def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False,
 
             val = [255* val[0], 255* val[1], 255* val[2]]
             new_line.append(val)
-            # if str(data['separator_bars'])=='True':
-            #     new_line.append([0,0,0])
 
         line=new_line
         line += [[255, 255, 255]] * (max_size - len(line))
@@ -83,7 +79,7 @@ def table_as_image_better(path, dialect= 'excel', color=True, cell_length=False,
             new_img.append(line)
 
     with open("colors.json", "w") as jsonfile:
-        myJSON = json.dump(data, jsonfile) # Writing to the file
+        json.dump(data, jsonfile)
         jsonfile.close()
 
     img= new_img
@@ -98,18 +94,18 @@ def parse_file(csv_reader, cell_length, color):
 
     with open("C:\\Users\\Ella\\Ella-Kopie\\Studium\\Semester9\\Job\\Mondrian extension for CSV Visualization\\mondrian\\colors.json", "r") as jsonfile:
         data = json.load(jsonfile) # Reading the file
-        #print("Read successful")
         jsonfile.close()
 
     for idx, line in enumerate(csv_reader):
-    #loop for idenifying last nonempty line + for parsing the colors of each line that rerader reads
+    #loop for identifying last nonempty line + for parsing the colors of each line that reader reads
 
         if line != [''] * len(line):
             last_nonempty = idx
 
-        # we are incrasing the idx by 1 because the numbering of the lines starts at in the file but 
+        # we are incrasing the idx by 1 because the numbering of the lines starts at 1 in the file but 
         # the idx starts at 0
 
+        #here, we choose the lines whose colors are displayed in the app
         if data['row_output_from'] !=0:
             if idx+1 < data['row_output_from']:
                 continue
@@ -120,7 +116,7 @@ def parse_file(csv_reader, cell_length, color):
                 	
         result = [parse_cell(val=val, color=color) for val in line]
 
-        #cell_length creates image where columns are sized according to length of their content
+        #cell_length creates image where columns are sized according to the size of their content
         if cell_length:
             result = [r for idx, r in enumerate(result) for _ in range(len(line[idx]))]
 
@@ -132,12 +128,8 @@ def parse_file(csv_reader, cell_length, color):
 
     return img,last_nonempty, max_size
 
-
-#this function finds out how lines are separated
-
 #img_same regulates whether pictures with one color are shown in the output or not
 def manipulate_created_image(img_file, image_same=True, resampling_method = "Nearest-neighbor  Interpolation"):
-    #check if the colors in the picture are all the same
     with open("C:\\Users\\Ella\\Ella-Kopie\\Studium\\Semester9\\Job\\Mondrian extension for CSV Visualization\\mondrian\\colors.json", "r") as jsonfile:
         data = json.load(jsonfile) # Reading the file
         jsonfile.close()
@@ -148,7 +140,6 @@ def manipulate_created_image(img_file, image_same=True, resampling_method = "Nea
 
     img = np.array(img_file,dtype=np.int8)
     img_file = Image.fromarray(img, 'RGB')
-    #img_file = img_file.resize((data['width'], data['height']), resample=Image.BOX)
     img_file = use_resampling_algorithm(img_file, resampling_method)
     enhancer = ImageEnhance.Brightness(img_file)
     factor = 0.97
@@ -182,6 +173,7 @@ def use_resampling_algorithm(img_file, resampling_method):
     
     return img_file
 
+#checks if there are at least two pixels with different colors in an image
 def check_if_image_same(img_file):
     img_colors_all_same = True
     if len(img_file)==0:

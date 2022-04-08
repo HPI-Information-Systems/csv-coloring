@@ -18,7 +18,6 @@ class customDateParserInfo(dateutil.parser.parserinfo):
 #1. differentiate_all_uppercase: words that only contain uppercase letters + plus non-letter signs
 #2. differentiate_all_lowercase: words that only contain lowercase letters + plus non-letter signs
 #3. differentiate_all_titles: strings where every word starts with an uppercase letter
-# to be differently coloured by the algorithm
 
 def parse_cell(val, color=False):
 
@@ -36,7 +35,6 @@ def parse_cell(val, color=False):
 
     comma_split = val.split(",")
 
-    # can be a number like 1,123 or something
     if any([len(x) == 3 for x in comma_split]) and not any([x.isalpha() for x in val]):
         val = re.sub(",", "", val)
 
@@ -80,16 +78,8 @@ def parse_cell(val, color=False):
     if val.isupper() & (str(data['differentiate_all_uppercase'])=="True"):
         return colour.Color(data['STRING_UPPER']).rgb
     elif val.islower() & (str(data['differentiate_all_lowercase'])=="True"):
-        #print('islower :'+ str(val))
         return colour.Color(data['STRING_LOWER']).rgb
     elif val.istitle() & (str(data['differentiate_all_titles'])=="True"):
-        #print('title :'+ str(val))
         return colour.Color(data['STRING_TITLE']).rgb
 
-
-    #print('generic :'+ str(val))
-    #return string_color
-    #st.write(data['STRING_GENERIC'])
-    # if data['separator_bars']=='True':
-    #     return colour.Color(data['STRING_GENERIC']).rgb, colour.Color(data['EMPTY']).rgb
     return colour.Color(data['STRING_GENERIC']).rgb

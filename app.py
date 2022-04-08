@@ -30,12 +30,13 @@ def load_data(uploaded_file, nrows, sep, quotechar = '"', escapechar=None):     
     data = pd.read_csv(uploaded_file, sep=sep, nrows=nrows, quotechar =quotechar, escapechar=escapechar)           #  read csv file
     return data
 
+#generates and places images
 def go_over_characters(file_path, character_choices, image_same, resampling_indices):
     # this part is for generating the numbers of columns depending on image width
     # i am assuming there are 1000 pixels for columns + image width in pixels
-    # this algorithm is mostly chosen because the past results achiebed with  it looked good,
-    # any improvements are appreciated
+    # this algorithm is mostly chosen because the past results achieved with  it looked good,
 
+    #TODO: improve algorithm to be more methodical, if possible
     with open("mondrian\\colors.json", "r") as jsonfile:
         data = json.load(jsonfile) # Reading the file
         jsonfile.close()
@@ -43,6 +44,9 @@ def go_over_characters(file_path, character_choices, image_same, resampling_indi
     max_pics_on_page = math.floor(1000/data["width"])
     space_pics_with_gaps = max_pics_on_page*data['width'] + (max_pics_on_page-1)*data["width"]
 
+    #if number of images(max_pics_on_pages) times their width + plus the gaps inbetween
+    # times that width is bigger than the 1000 pixel we assume to be all available 
+    # space, we reduce the total number of images and check agian
     while (space_pics_with_gaps>1000) & (max_pics_on_page >1):
         max_pics_on_page = max_pics_on_page-1
         space_pics_with_gaps = max_pics_on_page*data['width'] + (max_pics_on_page-1)*data["width"]
@@ -54,8 +58,8 @@ def go_over_characters(file_path, character_choices, image_same, resampling_indi
     quotechars = character_choices[1]
     escapechars = character_choices[2]
 
+    #generates images depending on the chosen dialect characters    
     for i in range(0, len(separators)):               
-
         for j in range(0, len(quotechars)): 
             
             for g in range(0, len(escapechars)):
@@ -69,7 +73,7 @@ def go_over_characters(file_path, character_choices, image_same, resampling_indi
                             image_all_same_color, image = manipulate_created_image(table_as_image_better(file_path, config_file_data=data, delimiter=f'{special_characters[separators[i]]}', quotechar=f'{special_characters[quotechars[j]]}', escapechar=f'{special_characters[g]}'), image_same, resampling_method)
                             if image_all_same_color:
                                 continue
-                            cols[num % max_pics_on_page].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+'escapechar:'+f'{special_characters[g]}')                        
+                            cols[num % max_pics_on_page].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar :'+f'{special_characters[g]}')                        
                             cols[num % max_pics_on_page].image(image)    
                             num = num+1              
                 elif num % 3 == 1:
@@ -77,7 +81,7 @@ def go_over_characters(file_path, character_choices, image_same, resampling_indi
                         image_all_same_color, image = manipulate_created_image(table_as_image_better(file_path,config_file_data=data, delimiter=f'{special_characters[separators[i]]}', quotechar=f'{special_characters[quotechars[j]]}', escapechar=f'{special_characters[g]}'), image_same,resampling_method)
                         if image_all_same_color:
                             continue
-                        cols[num % max_pics_on_page].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+'escapechar:'+f'{special_characters[g]}')                        
+                        cols[num % max_pics_on_page].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: '+f'{special_characters[g]}')                        
                         cols[num % max_pics_on_page].image(image)    
                         cols[num % 3].image(image)    
                         num=num+1   
@@ -86,14 +90,13 @@ def go_over_characters(file_path, character_choices, image_same, resampling_indi
                         image_all_same_color, image = manipulate_created_image(table_as_image_better(file_path,config_file_data=data, delimiter=f'{special_characters[separators[i]]}', quotechar=f'{special_characters[quotechars[j]]}', escapechar=f'{special_characters[g]}'), image_same, resampling_method)
                         if image_all_same_color:
                             continue
-                        cols[num % max_pics_on_page].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+'escapechar:'+f'{special_characters[g]}')                        
+                        cols[num % max_pics_on_page].write('separator: '+ f'{special_characters[separators[i]]}' + ', quotechar: ' + f'{special_characters[quotechars[j]]}'+', escapechar: '+f'{special_characters[g]}')                        
                         cols[num % max_pics_on_page].image(image)    
                         num=num+1
 
 def reset_columns_and_rows():
     with open("mondrian\\colors.json", "r") as jsonfile:
         data = json.load(jsonfile) # Reading the file
-         #print("Read successful")
         jsonfile.close()
     
     data['row_output_from']=0
@@ -101,13 +104,8 @@ def reset_columns_and_rows():
     data['row_output_start']=0
     data['row_output_end']=0
 
-    data['column_output_from']=0
-    data['column_output_until']=0
-    data['column_output_start']=0
-    data['column_output_end']=0
-
     with open("mondrian\\colors.json", "w") as jsonfile:
-        json.dump(data, jsonfile) # Writing to the file
+        json.dump(data, jsonfile) 
         jsonfile.close()
            
 def highlight_cell(cell_value, int_color, float_color, string_color):
@@ -144,102 +142,100 @@ def append_existing_file(uploaded_sep_file, uploaded_file, sep):
     return df
 
 def set_characters():
-            st.subheader('Select a delimiter (You must select at least one)')
-            cols = st.columns(9)
+    st.subheader('Select a delimiter (You must select at least one)')
+    cols = st.columns(9)
 
-            extraspecial_chars = list(special_characters)
-            choose_delimiter=[]
-            delimiter_indices=[]
-            choose_all= st.checkbox('Choose all characters', key=7)
-            # am excluding the characters that get rejected by the reader from what is shown,
-            # may have to change code to accomodate them
-            for i in range(0, len(extraspecial_chars)):
-                if choose_all:
-                    if extraspecial_chars[i]==',': 
-                        delimiter_choice=cols[i%9].checkbox(',',True, key=10)
-                    elif extraspecial_chars[i]=='': 
-                        delimiter_choice=False
-                        pass
-                    elif extraspecial_chars[i]=="\\r\\n":
-                        delimiter_choice=False
-                        pass
-                    else:
-                        delimiter_choice=cols[i%9].checkbox(extraspecial_chars[i],True, key=10)
-                elif extraspecial_chars[i]==',': 
-                    delimiter_choice=cols[i%9].checkbox(',',True, key=10)
-                elif extraspecial_chars[i]=="\\r\\n":
-                    delimiter_choice=False
-                    #pass
-                elif extraspecial_chars[i]=='':
-                    delimiter_choice=False
-                    pass
-                else: 
-                    delimiter_choice=cols[i%9].checkbox(extraspecial_chars[i], key=10)
-                choose_delimiter.append(delimiter_choice)
-                if delimiter_choice:
-                    delimiter_indices.append(i)
+    extraspecial_chars = list(special_characters)
+    choose_delimiter=[]
+    delimiter_indices=[]
+    choose_all= st.checkbox('Choose all characters', key=7)
+    # am excluding the characters that get rejected by the csv reader 
+    for i in range(0, len(extraspecial_chars)):
+        if choose_all:
+            if extraspecial_chars[i]==',': 
+                delimiter_choice=cols[i%9].checkbox(',',True, key=10)
+            elif extraspecial_chars[i]=='': 
+                delimiter_choice=False
+                pass
+            elif extraspecial_chars[i]=="\\r\\n":
+                delimiter_choice=False
+                pass
+            else:
+                delimiter_choice=cols[i%9].checkbox(extraspecial_chars[i],True, key=10)
+        elif extraspecial_chars[i]==',': 
+            delimiter_choice=cols[i%9].checkbox(',',True, key=10)
+        elif extraspecial_chars[i]=="\\r\\n":
+            delimiter_choice=False
+        elif extraspecial_chars[i]=='':
+            delimiter_choice=False
+            pass
+        else: 
+            delimiter_choice=cols[i%9].checkbox(extraspecial_chars[i], key=10)
+        choose_delimiter.append(delimiter_choice)
+
+        if delimiter_choice:
+            delimiter_indices.append(i)
 
             
-            st.subheader('Select a quotechar (You must choose at least one)')
-            cols = st.columns(9)
-            choose_quotechars=[]
-            quotechar_indices=[]
-            choose_all= st.checkbox('Choose all characters', key=8)
-            for i in range(0, len(extraspecial_chars)):
-                if choose_all:
-                    if extraspecial_chars[i]=='"': 
-                        quotechar_choice=cols[i%9].checkbox('"',True, key=11)
-                    elif extraspecial_chars[i]=='': 
-                        pass
-                        #quotechar_choice=cols[i%9].checkbox('"',True, key=18)
-                    else:
-                        quotechar_choice=cols[i%9].checkbox(extraspecial_chars[i],True, key=19)
-                elif extraspecial_chars[i]=='': 
-                    pass
-                elif extraspecial_chars[i]=='"': 
-                    quotechar_choice=cols[i%9].checkbox('"',True, key=15)
-                elif extraspecial_chars[i]=='':
-                    quotechar_choice=cols[i%9].checkbox('',True, key=16)
-                else: 
-                    quotechar_choice=cols[i%9].checkbox(extraspecial_chars[i], key=17)     
-                choose_quotechars.append(quotechar_choice)
-                if quotechar_choice:
-                    quotechar_indices.append(i)
+    st.subheader('Select a quotechar (You must choose at least one)')
+    cols = st.columns(9)
+    choose_quotechars=[]
+    quotechar_indices=[]
+    choose_all= st.checkbox('Choose all characters', key=8)
+    for i in range(0, len(extraspecial_chars)):
+        if choose_all:
+            if extraspecial_chars[i]=='"': 
+                quotechar_choice=cols[i%9].checkbox('"',True, key=11)
+            elif extraspecial_chars[i]=='': 
+                pass
+            else:
+                quotechar_choice=cols[i%9].checkbox(extraspecial_chars[i],True, key=19)
+        elif extraspecial_chars[i]=='': 
+            pass
+        elif extraspecial_chars[i]=='"': 
+            quotechar_choice=cols[i%9].checkbox('"',True, key=15)
+        elif extraspecial_chars[i]=='':
+            quotechar_choice=cols[i%9].checkbox('',True, key=16)
+        else: 
+            quotechar_choice=cols[i%9].checkbox(extraspecial_chars[i], key=17)     
+            choose_quotechars.append(quotechar_choice)
+        if quotechar_choice:
+            quotechar_indices.append(i)
             
-            st.subheader('Select the right escapechar')
-            cols = st.columns(9)
-            choose_escapechars=[]
-            escapechar_indices=[]
-            choose_all= st.checkbox('Choose all characters', key=9)
-            for i in range(0, len(extraspecial_chars)):
-                if choose_all:
-                    if extraspecial_chars[i]=='"':
-                        escapechar_choice=cols[i%9].checkbox('"',True, key=12)
-                    elif extraspecial_chars[i]=='': 
-                        escapechar_choice=False
-                        pass
-                    elif extraspecial_chars[i]=="\\r\\n":
-                        delimiter_choice=False
-                        pass
-                    else:    
-                        escapechar_choice=cols[i%9].checkbox(extraspecial_chars[i],True, key=12)
-                elif extraspecial_chars[i]=='"':
-                    escapechar_choice=cols[i%9].checkbox('"',True, key=12)
-                else: 
-                    escapechar_choice=cols[i%9].checkbox(extraspecial_chars[i], key=12)                
-                choose_escapechars.append(escapechar_choice)
-                if escapechar_choice:
-                    escapechar_indices.append(i)
+    st.subheader('Select the right escapechar')
+    cols = st.columns(9)
+    choose_escapechars=[]
+    escapechar_indices=[]
+    choose_all= st.checkbox('Choose all characters', key=9)
+    for i in range(0, len(extraspecial_chars)):
+        if choose_all:
+            if extraspecial_chars[i]=='"':
+                escapechar_choice=cols[i%9].checkbox('"',True, key=12)
+            elif extraspecial_chars[i]=='': 
+                escapechar_choice=False
+                pass
+            elif extraspecial_chars[i]=="\\r\\n":
+                delimiter_choice=False
+                pass
+            else:    
+                escapechar_choice=cols[i%9].checkbox(extraspecial_chars[i],True, key=12)
+        elif extraspecial_chars[i]=='"':
+            escapechar_choice=cols[i%9].checkbox('"',True, key=12)
+        else: 
+            escapechar_choice=cols[i%9].checkbox(extraspecial_chars[i], key=12)                
+        choose_escapechars.append(escapechar_choice)
+        if escapechar_choice:
+            escapechar_indices.append(i)
 
-            character_choices=[]
-            character_choices.append(delimiter_indices)
-            character_choices.append(quotechar_indices)
-            character_choices.append(escapechar_indices)
+    character_choices=[]
+    character_choices.append(delimiter_indices)
+    character_choices.append(quotechar_indices)
+    character_choices.append(escapechar_indices)
 
-            return character_choices
+    return character_choices
 
 
-
+#set colors for data types
 def set_colors():
     with open("mondrian\\colors.json", "r") as jsonfile:
         data = json.load(jsonfile) # Reading the file
@@ -264,21 +260,18 @@ def set_colors():
     check_title_strings = st.checkbox('Show title strings(at the beginning of each word is a capital letter  and nowhere else) in their own color')
     check_time = st.checkbox('Show times in their own color')
     check_date = st.checkbox('Show dates in their own color')
-    #check_separator_bars=st.checkbox('Divide columns with black bars')
     check_separator_rows=st.checkbox('Divide rows with black row')
 
     data['STRING_GENERIC']= string_color
     data['INTEGER']= int_color
     data['FLOAT']=  float_color 
-            
-    # if check_separator_bars:
-    #     data['separator_bars']= 'True'
+
 
     if check_separator_rows:
         data['separator_rows']= 'True'
 
     if check_lowercase_strings:
-        lowercase_color = cols[0].color_picker(                             #  set float color
+        lowercase_color = cols[0].color_picker(                             
             'Lowercase string color', 
             value='#32cd32'
             )  
@@ -286,7 +279,7 @@ def set_colors():
         data['differentiate_all_lowercase'] = "True"
 
     if check_uppercase_strings:
-        uppercase_color = cols[1].color_picker(                             #  set float color
+        uppercase_color = cols[1].color_picker(                             
             'Uppercase string color', 
             value='#00ff00'
             )  
@@ -295,7 +288,7 @@ def set_colors():
         data['differentiate_all_uppercase'] = "True"
 
     if check_title_strings:    
-        title_color = cols[2].color_picker(                             #  set float color
+        title_color = cols[2].color_picker(                             
             'Title string color', 
             value='#00ff7f'
             )        
@@ -303,7 +296,7 @@ def set_colors():
         data['differentiate_all_titles'] = "True"
 
     if check_date:    
-        date_color = cols[2].color_picker(                             #  set float color
+        date_color = cols[2].color_picker(                             
             'Date color', 
             value="#9370db"
             )        
@@ -312,7 +305,7 @@ def set_colors():
 
 
     if check_time:    
-        time_color = cols[2].color_picker(                             #  set float color
+        time_color = cols[2].color_picker(                            
             'Time color', 
                 value="#ba55d3"
             )        
@@ -320,7 +313,7 @@ def set_colors():
         data['differentiate_times'] = "True"
 
     with open("mondrian\\colors.json", "w") as jsonfile:
-        myJSON = json.dump(data, jsonfile) # Writing to the file
+        json.dump(data, jsonfile) 
         jsonfile.close()
 
 #set which rows are supposed to be displayed
@@ -366,12 +359,13 @@ def set_row_settings():
     st.write("Please note that depending on the used dialect, there may not be as many lines in the file as are given above so we will only display the lines within your given space that actually exist in the file")
 
     with open("mondrian\\colors.json", "w") as jsonfile:
-        myJSON = json.dump(data, jsonfile) # Writing to the file
+        json.dump(data, jsonfile) # Writing to the file
         jsonfile.close()
 
+#sets resampling algorithm for generated picture
 def set_resampling_algorithm():
     with open("mondrian\\colors.json", "r") as jsonfile:
-        data = json.load(jsonfile) # Reading the file
+        json.load(jsonfile)
         jsonfile.close()
 
     st.write('Select a resampling method. Please note that each chosen method will be used on '
@@ -380,8 +374,7 @@ def set_resampling_algorithm():
     resampling_settings = ["Nearest-neighbor  Interpolation", "Bilinear algorithm", "Bicubic algorithm", "Box Sampling","Lanczos Resampling", "Hamming algorithm"]
 
     choose_all= st.checkbox('Choose all characters', key=14)
-    # am excluding the characters that get rejected by the reader from what is shown,
-    # may have to change code to accomodate them
+    # am excluding the characters that get rejected by the csv reader
 
     resampling_indices=[]
     for i in range(0, len(resampling_settings)):
@@ -398,13 +391,13 @@ def set_resampling_algorithm():
     if len(resampling_indices)<1:
         st.write("Please choose at least one resampling algorithm or there wil be no picture upon"
         +"pressing the button")
-    #st.write("Choose the Image scaling method you want to use")
-    #resampling_settings = ["Nearest-neighbor  Interpolation", "Bilinear algorithm", "Bicubic algorithm", "Box Sampling","Lanczos Resampling", "Hamming algorithm"]
-    #resampling_settings_radio = st.radio('Change the way the rows of the csv file are displayed',resampling_settings)
 
     return resampling_indices
 
-def set_column_settings():
+#this was supposed to be used with a function that controlled how which columns
+#were used in the generated image
+#that function was not implemented, it is useless now
+def set_column_settings_deprecated():
 
     with open("mondrian\\colors.json", "r") as jsonfile:
         data = json.load(jsonfile) # Reading the file
@@ -445,12 +438,12 @@ def set_column_settings():
     st.write("Please note that depending on the used dialect, there may not be as many lines in the file as are given above so we will only display the lines within your given space that actually exist in the file")
 
     with open("mondrian\\colors.json", "w") as jsonfile:
-        myJSON = json.dump(data, jsonfile) # Writing to the file
+        json.dump(data, jsonfile) 
         jsonfile.close()
 
 def set_height_and_width():
     with open("mondrian\\colors.json", "r") as jsonfile:
-        data = json.load(jsonfile) # Reading the file
+        data = json.load(jsonfile)
         jsonfile.close()
     height = st.number_input('Height of generated picture',200)
     data['height']= height
@@ -460,11 +453,10 @@ def set_height_and_width():
         json.dump(data, jsonfile) # Writing to the file
         jsonfile.close()
     
-#resets 
+#resets the contents of the config file containing the image data back to default
 def reset_config_file():
-    #TODO:this file lacks the settings for the displayed lines, you will hav to add them once they work
     with open("mondrian\\colors.json", "r") as jsonfile:
-        data = json.load(jsonfile) # Reading the file
+        data = json.load(jsonfile) 
         jsonfile.close()
     string_color ='#90ee90'
     int_color ='#ffb6c1'        
@@ -494,15 +486,13 @@ def reset_config_file():
     data['TIME']=  time_color 
     data['differentiate_times'] = "False"
 
-    #data['separator_bars']= 'False'
     data['separator_rows']= 'False'
 
     data['row_output_from']= 0
     data['row_output_until']= 0
 
     with open("mondrian\\colors.json", "w") as jsonfile:
-        myJSON = json.dump(data, jsonfile) # Writing to the file
-        #print("Write successful")
+        json.dump(data, jsonfile)
         jsonfile.close()
 
 def app():
@@ -564,10 +554,7 @@ def app():
 
             set_height_and_width()
             set_row_settings()
-            resampling_indices = set_resampling_algorithm()
-            #right now pretty much all preset values are 0 -> these values mean that nothing needs to be
-            #changed because once you activated the visualization we  are certain you want to see an image            #idea: once something has been chosen, automatically write it into the config file
-            #this also means that you need default settings for them 
+            resampling_indices = set_resampling_algorithm() 
 
             set_colors()
 
