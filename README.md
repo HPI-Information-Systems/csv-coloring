@@ -23,6 +23,11 @@ This color distribution looks very odd. But if we use ... and press "Create Visu
 
 If more information is needed, you can also tick a box to also mark dates, times, uppercase strings, lowercase strings, and  titles with their own color, as seen below on the same file.
 
+![](https://github.com/HPI-Information-Systems/csv-coloring/blob/main/images/good_coloration_more_colors.PNG)
+
+The specific colors for each data type can be changed separately for every data type that is supposed to be displayed independently in the sidebar
+
+![](https://github.com/HPI-Information-Systems/csv-coloring/blob/main/images/Unbenannt.PNG)
 
 # Features
 There are also all kinds of other  features
@@ -31,10 +36,10 @@ There are also all kinds of other  features
 - resize your images
 - color different data types in different colors
 - change these colors as you want!
-- choose what algorithm to resample you
+- choose what algorithm to resample the image created from your csv table
 - faster display via web app
 - only show certain rows of csv file
-- divide the image with horizontal or vertical black bars to show where rows and/or columns end
+- divide the image with horizontalblack bars to show where rows and/or columns end
 
 # Issues
 If you have an interest in working on the program, you can help with the folloing issues
