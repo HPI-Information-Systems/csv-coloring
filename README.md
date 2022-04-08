@@ -4,6 +4,7 @@ Sometimes csv files are displayed with such garbled meaning, that they appear to
 
 # Installation
 
+
 This app requires the installation of the streamlit package Version 1.3.0(https://github.com/streamlit/streamlit) and Python 3.9.7.
 
 Simply install the app, move to the installation folder and type 
@@ -46,7 +47,7 @@ There are also all kinds of other  features
 If you have an interest in working on the program, you can help with the following issues
 
 - The program cannot yet identify title string data as title strings(as determined by Python's istitle() function)
-
+- when multiple images are generated, they and and the characters written above them are sometimes formatted oddly along each other and and/or shrunk from  their given pixel size
 
 # Extension ideas
 I have added some more specific extension ideas as TODOs in the code itself. Possible improvements in general are
