@@ -3,7 +3,6 @@ import pandas as pd
 import os
 from pathlib import Path
 
-import cv2 as cv
 import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image, ImageEnhance

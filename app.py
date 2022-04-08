@@ -188,6 +188,8 @@ def set_characters():
                 quotechar_choice=cols[i%9].checkbox('"',True, key=11)
             elif extraspecial_chars[i]=='': 
                 pass
+            elif extraspecial_chars[i]=="\\r\\n":
+                pass
             else:
                 quotechar_choice=cols[i%9].checkbox(extraspecial_chars[i],True, key=19)
         elif extraspecial_chars[i]=='': 
@@ -196,6 +198,8 @@ def set_characters():
             quotechar_choice=cols[i%9].checkbox('"',True, key=15)
         elif extraspecial_chars[i]=='':
             quotechar_choice=cols[i%9].checkbox('',True, key=16)
+        elif extraspecial_chars[i]=="\\r\\n":
+            pass
         else: 
             quotechar_choice=cols[i%9].checkbox(extraspecial_chars[i], key=17)     
             choose_quotechars.append(quotechar_choice)
